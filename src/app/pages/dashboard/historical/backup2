@@ -35,7 +35,7 @@ export class HistoricalComponent  {
   constructor(private http: HttpClient, private router: Router) {
 
 
-    // this.http.get<any>('http://20.188.110.129:3000/countmeaprofile').subscribe((res) => { console.log(res) })
+    // this.http.get<any>('http://192.169.118.5:3000/countmeaprofile').subscribe((res) => { console.log(res) })
    
 
 

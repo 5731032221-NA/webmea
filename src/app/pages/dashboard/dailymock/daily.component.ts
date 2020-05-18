@@ -73,14 +73,14 @@ export class DailyComponent {
 
   constructor(private http: HttpClient, private router: Router) {
 
-    // this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((res) => {  })
+    // this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((res) => {  })
     // this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
     //   .filter(icon => icon.indexOf('outline') === -1);
     // iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
   }
   // deleteRow(id){
-  //   this.http.delete<any>('http://20.188.110.129:3000/deletemeaprofile/'+id,{}).subscribe((delet) => { 
-  //     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((res) => { })
+  //   this.http.delete<any>('http://192.169.118.5:3000/deletemeaprofile/'+id,{}).subscribe((delet) => { 
+  //     this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((res) => { })
   //    })
 
   // }

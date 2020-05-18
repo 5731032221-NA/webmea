@@ -87,7 +87,7 @@ export class SignupComponent {
       }
       // console.log(this.Obj);
 
-      this.http.post<any>('http://20.188.110.129:3000/postaccount', this.Obj, options).subscribe(done => {
+      this.http.post<any>('http://192.169.118.5:3000/postaccount', this.Obj, options).subscribe(done => {
         this.dialogRef.close();
       })}
       

@@ -210,19 +210,19 @@ export class DailyComponent {
     console.log("val", val)
     if (val == 'Overall') {
       this.emoicon = "all";
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/male').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/male').subscribe((res) => {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
       })
 
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/female').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female').subscribe((res) => {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
       })
 
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/male').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -237,7 +237,7 @@ export class DailyComponent {
 
       });
 
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/female').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/female').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -253,20 +253,20 @@ export class DailyComponent {
       });
     } else if (val == 'Happy') {
       this.emoicon = "happy";
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/male/happy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/male/happy').subscribe((res) => {
         console.log(res);
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
       })
 
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/female/happy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/happy').subscribe((res) => {
         console.log(res);
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
       })
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/male/happy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/happy').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -281,7 +281,7 @@ export class DailyComponent {
 
       });
 
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/female/happy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/female/happy').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -297,20 +297,20 @@ export class DailyComponent {
       });
     } else if (val == 'Unhappy') {
       this.emoicon = "unhappy";
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/male/unhappy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/male/unhappy').subscribe((res) => {
         console.log(res);
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
       })
 
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/female/unhappy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/unhappy').subscribe((res) => {
         console.log(res);
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
       })
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/male/unhappy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/unhappy').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -325,7 +325,7 @@ export class DailyComponent {
 
       });
 
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/female/unhappy').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/female/unhappy').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -343,18 +343,18 @@ export class DailyComponent {
 
     } else if (val == 'Neutral') {
       this.emoicon = "neutral";
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/male/neutral').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/male/neutral').subscribe((res) => {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
       })
 
-      this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/female/neutral').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/neutral').subscribe((res) => {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
       })
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/male/neutral').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/neutral').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -369,7 +369,7 @@ export class DailyComponent {
 
       });
 
-      this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/female/neutral').subscribe((res) => {
+      this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/female/neutral').subscribe((res) => {
         // this.happy = [];
         let resdata = [];
         // this.nuetural = [];
@@ -449,14 +449,14 @@ export class DailyComponent {
         localStorage.removeItem('firstLoad');
     }
 
-    this.http.get<any>('http://20.188.110.129:3000/countmeaprofile').subscribe((res) => { this.empcount = res; })
-    this.http.get<any>('http://20.188.110.129:3000/getcountlate').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/countmeaprofile').subscribe((res) => { this.empcount = res; })
+    this.http.get<any>('http://192.169.118.5:3000/getcountlate').subscribe((res) => {
       this.ontimecount = res.ontime;
       this.latecount = res.late;
       this.ansentcount = res.absence;
       this.overtimecount = res.overtime;
     })
-    this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/male').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/male').subscribe((res) => {
       this.malecount = res.entry + res.exit;
       this.maleentrycount = res.entry;
       this.maleexitcount = res.exit;
@@ -481,7 +481,7 @@ export class DailyComponent {
 
     })
 
-    this.http.get<any>('http://20.188.110.129:3000/getcountexitbygender/female').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female').subscribe((res) => {
       this.femalecount = res.entry + res.exit;
       this.femaleentrycount = res.entry;
       this.femaleexitcount = res.exit;
@@ -504,7 +504,7 @@ export class DailyComponent {
     })
 
 
-    this.http.get<any>('http://20.188.110.129:3000/getemograph').subscribe((emotion) => {
+    this.http.get<any>('http://192.169.118.5:3000/getemograph').subscribe((emotion) => {
       this.happy = [];
       this.unhappy = [];
       // this.nuetural = [];
@@ -523,7 +523,7 @@ export class DailyComponent {
     });
 
 
-    this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/male').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male').subscribe((res) => {
       // this.happy = [];
       let resdata = [];
       // this.nuetural = [];
@@ -538,7 +538,7 @@ export class DailyComponent {
 
     });
 
-    this.http.get<any>('http://20.188.110.129:3000/getgrapghagebygender/female').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/female').subscribe((res) => {
       // this.happy = [];
       let resdata = [];
       // this.nuetural = [];
@@ -553,10 +553,10 @@ export class DailyComponent {
 
     });
 
-    this.http.get<any>('http://20.188.110.129:3000/getdailyhappy').subscribe((gethappy) => {
-      this.http.get<any>('http://20.188.110.129:3000/getdailyworktime').subscribe((getworktime) => {
-        this.http.get<any>('http://20.188.110.129:3000/getmeaprofile').subscribe((getmeaprofile) => {
-          this.http.get<any>('http://20.188.110.129:3000/getcheckin').subscribe((getcheckin) => {
+    this.http.get<any>('http://192.169.118.5:3000/getdailyhappy').subscribe((gethappy) => {
+      this.http.get<any>('http://192.169.118.5:3000/getdailyworktime').subscribe((getworktime) => {
+        this.http.get<any>('http://192.169.118.5:3000/getmeaprofile').subscribe((getmeaprofile) => {
+          this.http.get<any>('http://192.169.118.5:3000/getcheckin').subscribe((getcheckin) => {
             // this.happy = [];
             // let resdata = [];
             let bestemp = {};
@@ -631,7 +631,7 @@ export class DailyComponent {
                 this.bestemp = bestempval;
                 // this.bestempimg = element.image;
                 this.bestemppo = element.position;
-                this.http.get<any>('http://20.188.110.129:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+                this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.bestempimg = 'data:image/jpg;base64,' + res[0].encimage;
                   
@@ -642,7 +642,7 @@ export class DailyComponent {
                 this.happypersonname = element.name + " " + element.surname;
                 this.happyperson = happyval;
                 // this.happypersonimg = element.image;
-                this.http.get<any>('http://20.188.110.129:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+                this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.happypersonimg = 'data:image/jpg;base64,' + res[0].encimage;
                   
@@ -654,7 +654,7 @@ export class DailyComponent {
                 this.mealover = MEAloverval;
                 // this.mealoverimg = element.image;
                 this.mealoverpo = element.position;
-                this.http.get<any>('http://20.188.110.129:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+                this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.mealoverimg = 'data:image/jpg;base64,' + res[0].encimage;
                   
@@ -667,7 +667,7 @@ export class DailyComponent {
                   this.mealover = MEAloverval2;
                   // this.mealoverimg = element.image;
                   this.mealoverpo = element.position;
-                  this.http.get<any>('http://20.188.110.129:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+                  this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.mealoverimg = 'data:image/jpg;base64,' + res[0].encimage;
                   
@@ -768,8 +768,8 @@ export class DailyComponent {
 
   }
   // deleteRow(id){
-  //   this.http.delete<any>('http://20.188.110.129:3000/deletemeaprofile/'+id,{}).subscribe((delet) => { 
-  //     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((res) => { })
+  //   this.http.delete<any>('http://192.169.118.5:3000/deletemeaprofile/'+id,{}).subscribe((delet) => { 
+  //     this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((res) => { })
   //    })
 
   // }

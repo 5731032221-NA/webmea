@@ -29,12 +29,12 @@ export class AttendanceComponent implements OnInit {
     private http: HttpClient,
     public dialogRef: MatDialogRef<AttendanceComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofilebyid/' + data.id).subscribe((profile) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofilebyid/' + data.id).subscribe((profile) => {
       this.title = profile[0].title;
       this.name = profile[0].name;
       this.surname = profile[0].surname;
       this.profileimage = 'data:image/jpg;base64,' + profile[0].encimage;
-      this.http.get<any[]>('http://20.188.110.129:3000/attendanceimage/' + data.id).subscribe(async (attendance) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/attendanceimage/' + data.id).subscribe(async (attendance) => {
         // await attendance.sort(function(a, b) { return a.checkindatetime - b.checkindatetime; });  
         console.log("bb", attendance);
 
@@ -45,7 +45,7 @@ export class AttendanceComponent implements OnInit {
             // console.log(element['showimg']);
             element['showimg'] = true;
             element['showimg2'] = false;
-            this.http.get<any[]>('http://20.188.110.129:3000/getcropimage/' + element.checkoutImageCrop).subscribe((image2) => {
+            this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkoutImageCrop).subscribe((image2) => {
               element['image2'] = 'data:image/jpg;base64,' + image2['data'];
             })
           } else {
@@ -53,7 +53,7 @@ export class AttendanceComponent implements OnInit {
             element['showimg2'] = true;
             element.checkoutEmotion.age = '';
           }
-          this.http.get<any[]>('http://20.188.110.129:3000/getcropimage/' + element.checkinImageCrop).subscribe((image) => {
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkinImageCrop).subscribe((image) => {
 
             element['image1'] = 'data:image/jpg;base64,' + image['data'];
             // element['showimg'] = true;

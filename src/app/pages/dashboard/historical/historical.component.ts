@@ -47,7 +47,7 @@ export class HistoricalComponent {
 
   // Highcharts: typeof Highcharts = Highcharts;
   ngOnInit() {
-    this.http.get<any>('http://20.188.110.129:3000/gethistoricalemo').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/gethistoricalemo').subscribe((res) => {
       console.log(res)
       // this.dataemo = res
       this.stock = new StockChart({
@@ -127,7 +127,7 @@ export class HistoricalComponent {
       });
     })
 
-    this.http.get<any>('http://20.188.110.129:3000/gethistoricalcheckin').subscribe((res) => {
+    this.http.get<any>('http://192.169.118.5:3000/gethistoricalcheckin').subscribe((res) => {
       console.log(res)
       // this.dataemo = res
       this.stock2 = new StockChart({
@@ -204,8 +204,8 @@ export class HistoricalComponent {
       });
     })
     console.log("profile2");
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/').subscribe((topdata) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/gethistoricaltop/').subscribe((topdata) => {
         profile.forEach((element) => {
 
           if (topdata[element.id] == null) {
@@ -240,8 +240,8 @@ export class HistoricalComponent {
   //     this.to = year + month + date
   //   }
 
-  //   this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-  //     this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + this.from + "/" + this.to).subscribe((topdata) => {
+  //   this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+  //     this.http.get<any[]>('http://192.169.118.5:3000/gethistoricaltop/' + this.from + "/" + this.to).subscribe((topdata) => {
   //       profile.forEach((element) => {
 
   //         if (topdata[element.id] == null) {
@@ -296,8 +296,8 @@ export class HistoricalComponent {
 
     var from = year2 + ("0" + month2).slice(-2) + ("0" + date2).slice(-2);
 
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
         profile.forEach((element) => {
 
           if (topdata[element.id] == null) {
@@ -356,8 +356,8 @@ export class HistoricalComponent {
 
 
 
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
         profile.forEach((element) => {
 
           if (topdata[element.id] == null) {

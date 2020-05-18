@@ -29,12 +29,12 @@ export class AttendanceComponent implements OnInit {
     private http: HttpClient,
     public dialogRef: MatDialogRef<AttendanceComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofilebyid/' + data.id).subscribe((profile) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofilebyid/' + data.id).subscribe((profile) => {
       this.title = profile[0].title;
       this.name = profile[0].name;
       this.surname = profile[0].surname;
       this.profileimage = 'data:image/jpg;base64,' + profile[0].encimage;
-      this.http.get<any[]>('http://20.188.110.129:3000/attendance/' + data.id).subscribe((attendance) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/attendance/' + data.id).subscribe((attendance) => {
 
         attendance.forEach((element) => {
           let emotion1 = element.checkin.emotion.emotion;

@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
     //         this.loading = false;
     //       });
     let pass = Md5.hashStr(this.f.password.value)
-    this.http.get<any>('http://20.188.110.129:3000/getlogin/' + this.f.username.value + '/' + pass, options).subscribe(done => {
+    this.http.get<any>('http://192.169.118.5:3000/getlogin/' + this.f.username.value + '/' + pass, options).subscribe(done => {
       console.log("done", done);
       if (done.result == true) {
         this.router.navigate([this.returnUrl]);

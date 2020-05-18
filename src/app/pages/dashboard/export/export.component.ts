@@ -137,8 +137,8 @@ export class ExportComponent {
    
     var from = year2 + ("0" +month2).slice(-2) + ("0" +date2).slice(-2);
 
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
         if (checkin.length > 0) {
           checkin.forEach((element) => {
             element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
@@ -170,7 +170,7 @@ export class ExportComponent {
 
     })
 
-    // this.http.get<any>('http://20.188.110.129:3000/countmeaprofile').subscribe((res) => { console.log(res) })
+    // this.http.get<any>('http://192.169.118.5:3000/countmeaprofile').subscribe((res) => { console.log(res) })
 
 
   }
@@ -192,8 +192,8 @@ export class ExportComponent {
   //     this.to = year + month + date
   //   }
 
-  //   this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-  //     this.http.get<any[]>('http://20.188.110.129:3000/getexport/' + this.from + '/' + this.to).subscribe((checkin) => {
+  //   this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+  //     this.http.get<any[]>('http://192.169.118.5:3000/getexport/' + this.from + '/' + this.to).subscribe((checkin) => {
   //       checkin.forEach((element) => {
   //         element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
   //         if (element.checkout == '') {
@@ -253,8 +253,8 @@ export class ExportComponent {
 
 
 
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
         if (checkin.length > 0) {
           checkin.forEach((element) => {
             element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);

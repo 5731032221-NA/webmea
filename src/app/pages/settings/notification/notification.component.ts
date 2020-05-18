@@ -50,7 +50,7 @@ export class NotificationComponent {
     this.checkoutForm = this.formBuilder.group({
       email: ''
     });
-    this.http.get<any[]>('http://20.188.110.129:3000/getnotification').subscribe((emails) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getnotification').subscribe((emails) => {
 
       this.emails = emails;
 
@@ -68,8 +68,8 @@ export class NotificationComponent {
     }
     console.log(this.Obj);
     // this.todos.push(this.todoObj);
-    this.http.post<any>('http://20.188.110.129:3000/postnotification', this.Obj, options).subscribe(done => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getnotification').subscribe((emails) => {
+    this.http.post<any>('http://192.169.118.5:3000/postnotification', this.Obj, options).subscribe(done => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getnotification').subscribe((emails) => {
 
         this.emails = emails;
 
@@ -91,7 +91,7 @@ export class NotificationComponent {
       data: { id, email }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getnotification').subscribe((emails) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getnotification').subscribe((emails) => {
 
         this.emails = emails;
 

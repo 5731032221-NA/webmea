@@ -44,7 +44,7 @@ export class AccountManagementComponent {
     //   username: '',
     //   password: ''
     // });
-    this.http.get<any[]>('http://20.188.110.129:3000/getaccount').subscribe((accounts) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getaccount').subscribe((accounts) => {
 
       this.accounts = accounts;
 
@@ -62,8 +62,8 @@ export class AccountManagementComponent {
   //   }
   //   console.log(this.Obj);
   //   // this.todos.push(this.todoObj);
-  //   this.http.post<any>('http://20.188.110.129:3000/postaccount', this.Obj, options).subscribe(done =>  {
-  //   this.http.get<any[]>('http://20.188.110.129:3000/getaccount').subscribe((accounts) => {
+  //   this.http.post<any>('http://192.169.118.5:3000/postaccount', this.Obj, options).subscribe(done =>  {
+  //   this.http.get<any[]>('http://192.169.118.5:3000/getaccount').subscribe((accounts) => {
 
   //     this.accounts = accounts;
 
@@ -85,7 +85,7 @@ export class AccountManagementComponent {
       data: { id, username }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getaccount').subscribe((accounts) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getaccount').subscribe((accounts) => {
 
         this.accounts = accounts;
 
@@ -100,7 +100,7 @@ export class AccountManagementComponent {
       data: { id }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getaccount').subscribe((accounts) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getaccount').subscribe((accounts) => {
 
         this.accounts = accounts;
 
@@ -115,7 +115,7 @@ export class AccountManagementComponent {
       data: { }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getaccount').subscribe((accounts) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getaccount').subscribe((accounts) => {
 
         this.accounts = accounts;
 

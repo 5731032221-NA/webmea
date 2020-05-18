@@ -60,7 +60,7 @@ export class DeleteAccountComponent {
 
   //   this.route.queryParams.subscribe(params => {
   //     // console.log("params",params);
-  //     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile/' + this.data.id).subscribe((res) => {
+  //     this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile/' + this.data.id).subscribe((res) => {
   //       this.myDefaultValue = res[0].id
   //       this.checkoutForm = this.formBuilder.group({
   //         // id: res[0].id,
@@ -78,7 +78,7 @@ export class DeleteAccountComponent {
 
 
   onSubmit() {
-    this.http.delete<any>('http://20.188.110.129:3000/deleteaccount/' + this.data.id, {}).subscribe((delet) => {
+    this.http.delete<any>('http://192.169.118.5:3000/deleteaccount/' + this.data.id, {}).subscribe((delet) => {
       this.dialogRef.close();
     })
   }

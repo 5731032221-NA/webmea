@@ -28,14 +28,14 @@ export class EmoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     
     if (data.emo == "Overall") {
-      this.http.get<any>('http://20.188.110.129:3000/getmeaprofile').subscribe((getmeaprofile) => {
-        this.http.get<any[]>('http://20.188.110.129:3000/getmeabygender/' + data.gender).subscribe((res) => { this.dataSource = res })
+      this.http.get<any>('http://192.169.118.5:3000/getmeaprofile').subscribe((getmeaprofile) => {
+        this.http.get<any[]>('http://192.169.118.5:3000/getmeabygender/' + data.gender).subscribe((res) => { this.dataSource = res })
       })
     } else {
       let emo = 'neutral'
       if (data.emo == "Happy") emo = 'happy'
       else if (data.emo == "Unhappy") emo = 'unhappy'
-      this.http.get<any[]>('http://20.188.110.129:3000/getmeabygender/' + data.gender + '/' + emo).subscribe((res) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getmeabygender/' + data.gender + '/' + emo).subscribe((res) => {
         this.dataSource = res
       })
     }

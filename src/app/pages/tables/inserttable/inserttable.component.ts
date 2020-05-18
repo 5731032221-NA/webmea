@@ -143,9 +143,9 @@ export class TreeGridComponent {
     customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + ".jpg";
     this.checkoutForm.reset();
     console.log(customerData.name)
-    this.http.post<any>('http://20.188.110.129:3000/uploadid/' + customerData.id, {}).subscribe(uploadid =>
-      this.http.post<any>('http://20.188.110.129:3000/upload', formData, options2).subscribe(upload =>
-        this.http.post<any>('http://20.188.110.129:3000/posttrainimage', '{"id": "' + customerData.id + '","imageUrl": "' + customerData.image + '" }', options).subscribe(async (az1) => {
+    this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id, {}).subscribe(uploadid =>
+      this.http.post<any>('http://192.169.118.5:3000/upload', formData, options2).subscribe(upload =>
+        this.http.post<any>('http://192.169.118.5:3000/posttrainimage', '{"id": "' + customerData.id + '","imageUrl": "' + customerData.image + '" }', options).subscribe(async (az1) => {
           customerData.faceid = await az1.personId;
           const reader = new FileReader();
           reader.readAsDataURL(this.imageFile);
@@ -154,7 +154,7 @@ export class TreeGridComponent {
             // var ciphertext2 = AES.encrypt(reader.result, 'meaprofilepic').toString(enc.Utf8)
             var text = await reader.result.toString().substring(23);
             customerData.encimage = await AES.encrypt(text, 'meaprofilepic').toString();
-            this.http.post<any>('http://20.188.110.129:3000/postmeaprofile', customerData, options).subscribe(done => //console.log(done)
+            this.http.post<any>('http://192.169.118.5:3000/postmeaprofile', customerData, options).subscribe(done => //console.log(done)
             // console.log(az1)
             {
               this.spinner.hide();
@@ -170,7 +170,7 @@ export class TreeGridComponent {
     );
 
 
-    // let a = this.http.post<any>('http://20.188.110.129:3000/postmeaprofile',customerData,options).subscribe(hero => console.log(hero));
+    // let a = this.http.post<any>('http://192.169.118.5:3000/postmeaprofile',customerData,options).subscribe(hero => console.log(hero));
 
     // if (this.imageFile !== null) {
     //   const baseUrl = this.blob.generateBlobUrl(this.Config, this.imageFile.name);
