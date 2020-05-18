@@ -29,8 +29,8 @@ export class SmartTableComponent {
 
   constructor(private spinner: NgxSpinnerService,private http: HttpClient, private router: Router, public dialog: MatDialog) {
     this.spinner.show();
-    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofileandimage').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getcheckin').subscribe((checkin) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofileandimage').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getcheckin').subscribe((checkin) => {
         profile.forEach((element) => {
           element['checkin'] = '-';
           element['checkout'] =  '-';
@@ -55,7 +55,7 @@ export class SmartTableComponent {
     // iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
   }
   // deleteRow(id) {
-  //   this.http.delete<any>('http://20.188.110.129:3000/deletemeaprofile/' + id, {}).subscribe((delet) => {
+  //   this.http.delete<any>('http://192.169.118.5:3000/deletemeaprofile/' + id, {}).subscribe((delet) => {
       
   //   })
 
@@ -72,8 +72,8 @@ export class SmartTableComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.spinner.show();
-      this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofileandimage').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getcheckin').subscribe((checkin) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofileandimage').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getcheckin').subscribe((checkin) => {
         profile.forEach((element) => {
           element['checkin'] = '-';
           element['checkout'] =  '-';
@@ -101,8 +101,8 @@ export class SmartTableComponent {
       data: { id }
     });
     dialogRef.afterClosed().subscribe(result => {
-    //   this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofileandimage').subscribe((profile) => {
-    //   this.http.get<any[]>('http://20.188.110.129:3000/getcheckin').subscribe((checkin) => {
+    //   this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofileandimage').subscribe((profile) => {
+    //   this.http.get<any[]>('http://192.169.118.5:3000/getcheckin').subscribe((checkin) => {
     //     profile.forEach((element) => {
     //       element['checkin'] = '-';
     //       element['checkout'] =  '-';
@@ -130,8 +130,8 @@ export class SmartTableComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.spinner.show();
-      this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofileandimage').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getcheckin').subscribe((checkin) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofileandimage').subscribe((profile) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getcheckin').subscribe((checkin) => {
         profile.forEach((element) => {
           element['checkin'] = '-';
           element['checkout'] =  '-';
