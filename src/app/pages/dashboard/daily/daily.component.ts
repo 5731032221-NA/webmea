@@ -765,7 +765,7 @@ export class DailyComponent {
                 }
                 else {
                   this.happyout = "--:--";
-                  this.happyhour = "";
+                  this.happyhour = "--";
                 }
                 // let hap = ((element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 100 + (element.checkoutEmotion.emotion.happiness + element.checkoutEmotion.emotion.surprise) * 200) / 2;
                 var hap = (element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 50;
