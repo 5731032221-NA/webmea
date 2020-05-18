@@ -14,7 +14,7 @@ interface DialogData {
 export class EmoComponent implements OnInit {
 
 
-  displayedColumns = ['No.','ID', 'First Name - Last Name',  'Walk-In Time', 'Walk-Out Time', 'Profile Picture'];
+  displayedColumns = ['No.', 'ID', 'First Name - Last Name', 'Walk-In Time', 'Walk-Out Time', 'Profile Picture'];
   dataSource: any[];
   p: number = 1;
   itemsPerPage: number = 10;
@@ -26,17 +26,35 @@ export class EmoComponent implements OnInit {
     private http: HttpClient,
     public dialogRef: MatDialogRef<EmoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    
+
     if (data.emo == "Overall") {
       this.http.get<any>('http://192.169.118.5:3000/getmeaprofile').subscribe((getmeaprofile) => {
-        this.http.get<any[]>('http://192.169.118.5:3000/getmeabygender/' + data.gender).subscribe((res) => { this.dataSource = res })
+        this.http.get<any[]>('http://192.169.118.5:3000/getmeabygender/' + data.gender).subscribe((res) => {
+          res.forEach((element) => {
+            this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+              // this.happy = [];
+              element['image_data'] = 'data:image/jpg;base64,' + res[0].encimage;
+            });
+            // resdata.push(element.count);
+
+          })
+          this.dataSource = res;
+        })
       })
     } else {
       let emo = 'neutral'
       if (data.emo == "Happy") emo = 'happy'
       else if (data.emo == "Unhappy") emo = 'unhappy'
       this.http.get<any[]>('http://192.169.118.5:3000/getmeabygender/' + data.gender + '/' + emo).subscribe((res) => {
-        this.dataSource = res
+        res.forEach((element) => {
+          this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
+            // this.happy = [];
+            element['image_data'] = 'data:image/jpg;base64,' + res[0].encimage;
+          });
+          // resdata.push(element.count);
+
+        })
+        this.dataSource = res;
       })
     }
 

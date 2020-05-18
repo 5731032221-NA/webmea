@@ -634,7 +634,7 @@ export class DailyComponent {
                 this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.bestempimg = 'data:image/jpg;base64,' + res[0].encimage;
-                  
+
 
                 });
               }
@@ -645,7 +645,7 @@ export class DailyComponent {
                 this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.happypersonimg = 'data:image/jpg;base64,' + res[0].encimage;
-                  
+
                 });
                 this.happypersonpo = element.position;
               }
@@ -657,7 +657,7 @@ export class DailyComponent {
                 this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
                   // this.happy = [];
                   this.mealoverimg = 'data:image/jpg;base64,' + res[0].encimage;
-                  
+
 
                 });
               }
@@ -668,11 +668,11 @@ export class DailyComponent {
                   // this.mealoverimg = element.image;
                   this.mealoverpo = element.position;
                   this.http.get<any>('http://192.169.118.5:3000/getmeaprofilebyid/' + element.id).subscribe((res) => {
-                  // this.happy = [];
-                  this.mealoverimg = 'data:image/jpg;base64,' + res[0].encimage;
-                  
+                    // this.happy = [];
+                    this.mealoverimg = 'data:image/jpg;base64,' + res[0].encimage;
 
-                });
+
+                  });
                 }
               }
             });
