@@ -683,7 +683,7 @@ export class DailyComponent {
                 this.bestempin = element.checkin;
                 if (element.checkout === "") {
                   this.bestempout = "--:--";
-                  this.bestempout = "-";
+                  this.bestemphour = "--";
                 }
                 else {
                   this.bestempout = element.checkout;
@@ -715,7 +715,7 @@ export class DailyComponent {
                   }
                   else {
                     this.mealoverout = "--:--";
-                    this.mealoverhour = "-"
+                    this.mealoverhour = "--"
                   }
                   var hap = (element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 50;
                   if (element.checkoutEmo != "") {
@@ -739,7 +739,7 @@ export class DailyComponent {
                   }
                   else {
                     this.mealoverout = "--:--";
-                    this.mealoverhour = "-"
+                    this.mealoverhour = "--"
                   }
                   // let hap = ((element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 100 + (element.checkoutEmotion.emotion.happiness + element.checkoutEmotion.emotion.surprise) * 200) / 2;
                   var hap = (element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 50;
