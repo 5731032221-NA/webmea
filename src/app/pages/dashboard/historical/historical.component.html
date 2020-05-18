@@ -12,8 +12,11 @@
     <div [chart]="stock2"></div>
 
     <div style="padding: 2% 0;">
-      <span style="color: #f7661e; font-size: 28px; font-weight: bold; ">&#9733; Top Super Star</span>
-      <mat-form-field>
+
+      <span style="color: #f7661e; font-size: 28px; font-weight: bold; ">&#9733; 10 Greatest MEA Superstar</span>
+
+
+      <!-- <mat-form-field>
         <mat-label>From</mat-label>
         <input matInput [matDatepicker]="picker" (dateChange)="toplist('startDate', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,7 +27,52 @@
         <input matInput [matDatepicker]="picker2" (dateChange)="toplist('EndDate', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2 [startAt]="endDate"></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field> -->
+      <div style="position: absolute;top: 0px;right: 16px; top: 835px; ">
+        <form class="form-inline" [formGroup]="myForm">
+          <div class="form-group hidden">
+            <div class="input-group">
+
+              <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker"
+                [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+                outsideDays="hidden" [startDate]="fromDate!" [minDate]="{year: 2020, month: 4, day: 20}"
+                [maxDate]="maxDate" style="visibility: hidden;">
+              <ng-template #t let-date let-focused="focused">
+                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                  [class.disabled]='isDisble(date)' [class.faded]="isHovered(date) || isInside(date)"
+                  (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                  {{ date.day }}
+                </span>
+              </ng-template>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <a style="margin-top: 10px; padding-right: 6px;">From </a>
+              <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate"
+                [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                  <i class="fas fa-calendar-alt fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group ml-2">
+            <div class="input-group">
+              <a style="margin-top: 10px; padding-right: 6px;">To </a>
+              <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
+                [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i
+                    class="fas fa-calendar-alt fa-fw"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <hr />
+      </div>
     </div>
 
     <!-- <div class="example-config">

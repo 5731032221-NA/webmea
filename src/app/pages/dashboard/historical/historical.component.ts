@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { formatDate } from '@angular/common';
 // import * as Highcharts from 'highcharts';
 import { StockChart } from 'angular-highcharts';
+import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder } from '@angular/forms';
 // declare var require: any;
 // let Boost = require('highcharts/modules/boost');
 // let noData = require('highcharts/modules/no-data-to-display');
@@ -26,14 +28,22 @@ import { StockChart } from 'angular-highcharts';
   styleUrls: ['./historical.component.scss'],
 })
 export class HistoricalComponent {
-  startDate = new Date();
-  endDate = new Date();
+  // startDate = new Date();
+  // endDate = new Date();
   stock: StockChart;
   stock2: StockChart;
   dataemo: any;
   from: any = "20200401";
   to: any = formatDate(new Date(), 'yyyyMMdd', 'en');;
   topdata: any[];
+
+  hoveredDate: NgbDate | null = null;
+  empty: boolean = false;
+  fromDate: any | null;
+  toDate: any | null;
+  // minDate: any = {year: 2020, month: 4, day: 20}
+  maxDate: any;
+  minDate: any = { year: 2020, month: 4, day: 20 }
 
   // Highcharts: typeof Highcharts = Highcharts;
   ngOnInit() {
@@ -71,11 +81,11 @@ export class HistoricalComponent {
         // },
 
         yAxis: {
-          labels: {
-            formatter: function () {
-              return (this.value > 0 ? ' + ' : '') + this.value + '%';
-            }
-          },
+          // labels: {
+          //   formatter: function () {
+          //     return (this.value > 0 ? ' + ' : '') + this.value + '%';
+          //   }
+          // },
           plotLines: [{
             value: 0,
             width: 2,
@@ -95,15 +105,15 @@ export class HistoricalComponent {
         },
         plotOptions: {
           series: {
-            compare: 'percent',
+            // compare: 'percent',
             showInNavigator: true
           }
         },
 
         tooltip: {
 
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
-          valueDecimals: 2,
+          // pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+          // valueDecimals: 2,
           split: true
         },
         legend: {
@@ -150,11 +160,11 @@ export class HistoricalComponent {
         // },
 
         yAxis: {
-          labels: {
-            formatter: function () {
-              return (this.value > 0 ? ' + ' : '') + this.value + '%';
-            }
-          },
+          // labels: {
+          //   formatter: function () {
+          //     return (this.value > 0 ? ' + ' : '') + this.value + '%';
+          //   }
+          // },
           plotLines: [{
             value: 0,
             width: 2,
@@ -172,14 +182,14 @@ export class HistoricalComponent {
         },
         plotOptions: {
           series: {
-            compare: 'percent',
+            // compare: 'percent',
             showInNavigator: true
           }
         },
 
         tooltip: {
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
-          valueDecimals: 2,
+          // pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+          // valueDecimals: 2,
           split: true
         },
         legend: {
@@ -213,25 +223,81 @@ export class HistoricalComponent {
     })
   }
 
-  toplist(type: string, event: MatDatepickerInputEvent<Date>) {
-    // this.events.push(`${type}: ${event.value}`);
-    // console.log(type, event);
-    let date_ob = event.value;
-    let date = ("0" + date_ob.getDate()).slice(-2);
+  // toplist(type: string, event: MatDatepickerInputEvent<Date>) {
+  //   // this.events.push(`${type}: ${event.value}`);
+  //   // console.log(type, event);
+  //   let date_ob = event.value;
+  //   let date = ("0" + date_ob.getDate()).slice(-2);
+
+  //   // current month
+  //   let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+  //   // current year
+  //   let year = date_ob.getFullYear();
+  //   if (type == "startDate") {
+  //     this.from = year + month + date
+  //   } else if (type == "EndDate") {
+  //     this.to = year + month + date
+  //   }
+
+  //   this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
+  //     this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + this.from + "/" + this.to).subscribe((topdata) => {
+  //       profile.forEach((element) => {
+
+  //         if (topdata[element.id] == null) {
+  //           element['topdata'] = { "thebest": 0, "happiness": 0, "mealover": 0, "total": 0 };
+  //         } else {
+  //           element['topdata'] = topdata[element.id];
+  //         }
+
+
+  //       })
+  //       profile.sort((a, b) => (b.topdata.total - a.topdata.total));
+  //       this.topdata = profile;
+  //       console.log("profile", profile);
+  //     })
+  //   })
+  // }
+
+  myForm;
+
+  constructor(private formBuilder: FormBuilder, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private http: HttpClient, private router: Router) {
+
+
+    var date_ob = new Date();
+    date_ob.setDate(date_ob.getDate() - 1);
+    let date = date_ob.getDate();
 
     // current month
-    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    let month = (date_ob.getMonth() + 1);
 
     // current year
     let year = date_ob.getFullYear();
-    if (type == "startDate") {
-      this.from = year + month + date
-    } else if (type == "EndDate") {
-      this.to = year + month + date
-    }
+
+    var date_ob2 = new Date();
+    date_ob2.setDate(date_ob2.getDate() - 8);
+    let date2 = date_ob2.getDate();
+
+    // current month
+    let month2 = (date_ob2.getMonth() + 1);
+
+    // current year
+    let year2 = date_ob2.getFullYear();
+    this.maxDate = { year: year, month: month, day: date };
+    this.fromDate = { year: year2, month: month2, day: date2 };
+    this.toDate = { year: year, month: month, day: date };
+    this.myForm = this.formBuilder.group({
+      fromDate: { year: year2, month: month2, day: date2 },
+      todate: { year: year, month: month, day: date },
+    });
+
+    var to = year + ("0" + month).slice(-2) + ("0" + date).slice(-2);
+
+
+    var from = year2 + ("0" + month2).slice(-2) + ("0" + date2).slice(-2);
 
     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + this.from + "/" + this.to).subscribe((topdata) => {
+      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
         profile.forEach((element) => {
 
           if (topdata[element.id] == null) {
@@ -247,18 +313,90 @@ export class HistoricalComponent {
         console.log("profile", profile);
       })
     })
-  }
 
-
-
-  constructor(private http: HttpClient, private router: Router) {
-
-
-    // this.http.get<any>('http://20.188.110.129:3000/countmeaprofile').subscribe((res) => { console.log(res) })
 
 
   }
 
+
+  onDateSelection(date: NgbDate) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+    let to_date = this.toDate;
+    if (to_date == null) {
+      to_date = this.fromDate
+    }
+    let date_ob = new Date(to_date.year, to_date.month - 1, to_date.day);
+
+    let day = ("0" + date_ob.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = date_ob.getFullYear();
+    var to = year + month + day
+
+    let date_ob2 = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
+    date_ob2.setDate(date_ob2.getDate() - 1);
+    let day2 = ("0" + date_ob2.getDate()).slice(-2);
+
+    // current month
+    let month2 = ("0" + (date_ob2.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year2 = date_ob2.getFullYear();
+    var from = year2 + month2 + day2
+
+
+
+    this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
+      this.http.get<any[]>('http://20.188.110.129:3000/gethistoricaltop/' + from + "/" + to).subscribe((topdata) => {
+        profile.forEach((element) => {
+
+          if (topdata[element.id] == null) {
+            element['topdata'] = { "thebest": 0, "happiness": 0, "mealover": 0, "total": 0 };
+          } else {
+            element['topdata'] = topdata[element.id];
+          }
+
+
+        })
+        profile.sort((a, b) => (a.id - b.id));
+        profile.sort((a, b) => (b.topdata.total - a.topdata.total));
+        this.topdata = profile;
+        console.log("profile", profile);
+      })
+    })
+  }
+
+  isHovered(date: NgbDate) {
+    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
+  }
+
+  isDisble(date: NgbDate) {
+    return date.before(this.minDate) || date.after(this.maxDate);
+  }
+
+  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
+    console.log("validateInput");
+    const parsed = this.formatter.parse(input);
+    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  }
 
 
 

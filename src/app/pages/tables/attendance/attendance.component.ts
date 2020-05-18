@@ -44,11 +44,13 @@ export class AttendanceComponent implements OnInit {
           if (element.checkout != '') {
             // console.log(element['showimg']);
             element['showimg'] = true;
+            element['showimg2'] = false;
             this.http.get<any[]>('http://20.188.110.129:3000/getcropimage/' + element.checkoutImageCrop).subscribe((image2) => {
               element['image2'] = 'data:image/jpg;base64,' + image2['data'];
             })
           } else {
             element['showimg'] = false;
+            element['showimg2'] = true;
             element.checkoutEmotion.age = '';
           }
           this.http.get<any[]>('http://20.188.110.129:3000/getcropimage/' + element.checkinImageCrop).subscribe((image) => {

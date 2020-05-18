@@ -45,7 +45,7 @@
           <td>{{el.checkoutEmotion.age}}</td>
           <td>{{el.checkout}}</td>
           <td>{{el.checkoutEmo}}</td>
-          <td> <img class="tb" [src]="el.image2" /></td>
+          <td style="width: 70px;"> <img class="tb" [src]="el.image2" *ngIf="el.showimg"/></td>
 
         </tr>
       </tbody>

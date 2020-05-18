@@ -55,7 +55,7 @@ export class SignupComponent {
     // let patt = false;
     let patt1 = '(?=.*[a-z])'
     let patt2 = '(?=.*[A-Z])'
-    let patt3 = '[a-zA-Z0-9]{8,}'
+    let patt3 = '.{8,}'
     let res1 = event.password.match(patt1);
     let res2 = event.password.match(patt2);
     let res3 = event.password.match(patt3);

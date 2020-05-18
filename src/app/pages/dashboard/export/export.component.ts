@@ -29,17 +29,19 @@ export class ExportComponent {
   //   esal: 3000
   // }];
   hoveredDate: NgbDate | null = null;
-
-  fromDate: NgbDate | null;
-  toDate: NgbDate | null;
+  empty: boolean = false;
+  fromDate: any | null;
+  toDate: any | null;
+  // minDate: any = {year: 2020, month: 4, day: 20}
+  maxDate: any;
 
   displayedColumns = ['รหัสพนักงาน', 'ชื่อ - สกุล', 'วันที่', 'เพศ', 'อายุ-ขาเข้า', 'วันเวลา-ขาเข้า', 'อารมณ์เข้างาน', 'อายุ-ขาออก', 'วันเวลา-ขาออก', 'อารมณ์ออกงาน'];
   dataSource: any[];
   p: number = 1;
-  from: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-  to: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  // from: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  // to: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   // myGroup = new FormGroup({ firstName: new FormControl() });
-
+  minDate: any = { year: 2020, month: 4, day: 20 }
   ngOnInit() {
   }
 
@@ -102,36 +104,70 @@ export class ExportComponent {
 
   myForm;
 
-  constructor(private formBuilder: FormBuilder,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private http: HttpClient, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private http: HttpClient, private router: Router) {
+    var date_ob = new Date();
+    date_ob.setDate(date_ob.getDate() - 1);
+    let date = date_ob.getDate();
+
+    // current month
+    let month = (date_ob.getMonth() + 1);
+
+    // current year
+    let year = date_ob.getFullYear();
+
+    var date_ob2 = new Date();
+    date_ob2.setDate(date_ob2.getDate() - 8);
+    let date2 = date_ob2.getDate();
+
+    // current month
+    let month2 = (date_ob2.getMonth() + 1);
+
+    // current year
+    let year2 = date_ob2.getFullYear();
+    this.maxDate = { year: year, month: month, day: date };
+    this.fromDate = { year: year2, month: month2, day: date2 };
+    this.toDate = { year: year, month: month, day: date };
     this.myForm = this.formBuilder.group({
-      fromDate: null,
-      todate: null,
+      fromDate: { year: year2, month: month2, day: date2 },
+      todate: { year: year, month: month, day: date },
     });
-    
+
+       var to = year + ("0" +month).slice(-2) + ("0" +date).slice(-2);
+
+   
+    var from = year2 + ("0" +month2).slice(-2) + ("0" +date2).slice(-2);
+
     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
-      this.http.get<any[]>('http://20.188.110.129:3000/getcheckin').subscribe((checkin) => {
-        checkin.forEach((element) => {
+      this.http.get<any[]>('http://20.188.110.129:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
+        if (checkin.length > 0) {
+          checkin.forEach((element) => {
+            element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
 
-          element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
-          
-          if (element.checkout == '') {
-            element.checkout = '-';
-            element.checkoutEmo = '-';
-            element.checkoutEmotion.age = '-'
-          }
-          profile.forEach((element2) => {
-
-            if (element.id == element2.id) {
-              element['title'] = element2.title;
-              element['name'] = element2.name;
-              element['surname'] = element2.surname;
+            if (element.checkout == '') {
+              element.checkout = '-';
+              element.checkoutEmo = '-';
+              element.checkoutEmotion.age = '-'
             }
+            profile.forEach((element2) => {
+
+              if (element.id == element2.id) {
+                element['title'] = element2.title;
+                element['name'] = element2.name;
+                element['surname'] = element2.surname;
+              }
+
+            })
 
           })
 
-        })
-        this.dataSource = checkin;
+          this.empty = false;
+          this.dataSource = checkin;
+        } else {
+          this.empty = true;
+          this.dataSource = checkin;
+        }
       })
+
     })
 
     // this.http.get<any>('http://20.188.110.129:3000/countmeaprofile').subscribe((res) => { console.log(res) })
@@ -194,6 +230,7 @@ export class ExportComponent {
       to_date = this.fromDate
     }
     let date_ob = new Date(to_date.year, to_date.month - 1, to_date.day);
+
     let day = ("0" + date_ob.getDate()).slice(-2);
 
     // current month
@@ -204,6 +241,7 @@ export class ExportComponent {
     var to = year + month + day
 
     let date_ob2 = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
+    date_ob2.setDate(date_ob2.getDate() - 1);
     let day2 = ("0" + date_ob2.getDate()).slice(-2);
 
     // current month
@@ -211,32 +249,39 @@ export class ExportComponent {
 
     // current year
     let year2 = date_ob2.getFullYear();
-    var   from = year2 + month2 + day2
-   
-    
+    var from = year2 + month2 + day2
+
+
 
     this.http.get<any[]>('http://20.188.110.129:3000/getmeaprofile').subscribe((profile) => {
       this.http.get<any[]>('http://20.188.110.129:3000/getexport/' + from + '/' + to).subscribe((checkin) => {
-        checkin.forEach((element) => {
-          element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
-          
-          if (element.checkout == '') {
-            element.checkout = '-';
-            element.checkoutEmo = '-';
-            element.checkoutEmotion.age = '-'
-          }
-          profile.forEach((element2) => {
+        if (checkin.length > 0) {
+          checkin.forEach((element) => {
+            element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
 
-            if (element.id == element2.id) {
-              element['title'] = element2.title;
-              element['name'] = element2.name;
-              element['surname'] = element2.surname;
+            if (element.checkout == '') {
+              element.checkout = '-';
+              element.checkoutEmo = '-';
+              element.checkoutEmotion.age = '-'
             }
+            profile.forEach((element2) => {
+
+              if (element.id == element2.id) {
+                element['title'] = element2.title;
+                element['name'] = element2.name;
+                element['surname'] = element2.surname;
+              }
+
+            })
 
           })
 
-        })
-        this.dataSource = checkin;
+          this.empty = false;
+          this.dataSource = checkin;
+        } else {
+          this.empty = true;
+          this.dataSource = checkin;
+        }
       })
     })
   }
@@ -251,6 +296,10 @@ export class ExportComponent {
 
   isRange(date: NgbDate) {
     return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
+  }
+
+  isDisble(date: NgbDate) {
+    return date.before(this.minDate) || date.after(this.maxDate);
   }
 
   validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {

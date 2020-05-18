@@ -43,6 +43,11 @@ nb-card.inline-form-card nb-card-body {
   background-color: rgba(2, 117, 216, 0.5);
 }
 
+.custom-day.disabled{
+  color: #999;
+  background-color: #DDD;
+}
+
 ::ng-deep datepicker-value-example .mat-form-field-label{
   color:#ff7701;;
 }
