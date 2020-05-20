@@ -1,5 +1,5 @@
 import { Component, Input, Inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+// import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 // import { Observable, of } from 'rxjs';
@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { ActivatedRoute } from '@angular/router';
 interface DialogData {
   id: string;
-  nameid: string
+  nameid: string;
+  faceid: string;
 }
 
 const httpHeaders = new HttpHeaders({
@@ -79,7 +80,12 @@ export class DeletetableTableComponent {
 
   onSubmit() {
     this.http.delete<any>('http://192.169.118.5:3000/deletemeaprofile/' + this.data.id, {}).subscribe((delet) => {
-      this.dialogRef.close();
+      this.http.post<any>('http://192.169.118.5:3000/removefaceapi/', '{"faceid": "' + this.data.faceid + '" }', options).subscribe(az1 => {
+        // console.log("hmm",az1);
+        // this.spinner.hide();
+        this.dialogRef.close()
+
+      })
     })
   }
 

@@ -127,7 +127,7 @@ export class EditTableComponent {
         this.http.post<any>('http://192.169.118.5:3000/uploadid/' + this.data.nameid, {}).subscribe(uploadid =>
           this.http.post<any>('http://192.169.118.5:3000/upload', formData, options2).subscribe(upload =>
             this.http.post<any>('http://192.169.118.5:3000/updatetrainimage', '{"faceid": "' + this.data.faceid + '","id": "' + this.data.nameid + '","imageUrl": "' + "https://oneteamblob.blob.core.windows.net/meapicture/" + this.data.nameid + ".jpg" + '" }', options).subscribe(az1 => {
-              console.log("hmm",az1);
+              // console.log("hmm",az1);
               this.spinner.hide();
               this.dialogRef.close()
             }

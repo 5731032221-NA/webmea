@@ -155,11 +155,14 @@ export class TreeGridComponent {
             var text = await reader.result.toString().substring(23);
             customerData.encimage = await AES.encrypt(text, 'meaprofilepic').toString();
             this.http.post<any>('http://192.169.118.5:3000/postmeaprofile', customerData, options).subscribe(done => //console.log(done)
-            // console.log(az1)
-            {
-              this.spinner.hide();
-              this.router.navigate(['/pages/tables/table'])
-            }
+              // console.log(az1)
+              this.http.post<any[]>('http://192.169.118.5:3000/adddefault', '{"url":"' + customerData.image + '", "id":"' + customerData.id + '"}', options).subscribe((adddefault) => {
+
+                this.spinner.hide();
+                this.router.navigate(['/pages/tables/table'])
+
+              })
+
             )
             // });
 
