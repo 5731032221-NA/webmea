@@ -35,7 +35,7 @@ export class AttendanceComponent implements OnInit {
       this.surname = profile[0].surname;
       this.profileimage = 'data:image/jpg;base64,' + profile[0].encimage;
       this.http.get<any[]>('http://192.169.118.5:3000/attendanceimage/' + data.id).subscribe(async (attendance) => {
-        // await attendance.sort(function(a, b) { return a.checkindatetime - b.checkindatetime; });  
+        await attendance.sort(function(a, b) { return b.checkindatetime - a.checkindatetime; });  
         console.log("bb", attendance);
 
         attendance.forEach((element) => {
