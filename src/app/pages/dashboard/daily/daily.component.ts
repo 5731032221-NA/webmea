@@ -697,7 +697,7 @@ export class DailyComponent {
 
                 }
                 if (hap > 100) hap = 100;
-                this.bestemphap = hap;
+                this.bestemphap = parseInt(hap.toFixed(2));
 
 
               }
@@ -725,7 +725,7 @@ export class DailyComponent {
 
                   }
                   if (hap > 100) hap = 100;
-                  this.mealoverhap = hap;
+                  this.mealoverhap = parseInt(hap.toFixed(2));
 
                 }
               } else {
@@ -750,7 +750,7 @@ export class DailyComponent {
 
                   }
                   if (hap > 100) hap = 100;
-                  this.mealoverhap = hap;
+                  this.mealoverhap = parseInt(hap.toFixed(2));
 
                 }
               }
@@ -776,7 +776,7 @@ export class DailyComponent {
 
                 }
                 if (hap > 100) hap = 100;
-                this.happypersonhap = hap;
+                this.happypersonhap = parseInt(hap.toFixed(2));
 
               }
             });
