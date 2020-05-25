@@ -8,14 +8,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { BlobModule } from 'angular-azure-blob-service';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {AccountManagementComponent} from './accountmanagement/accountmanagement.component'
-import {  NotificationComponent} from './notification/notification.component'
+import {AccountManagementComponent} from './accountmanagement/accountmanagement.component';
+import {  NotificationComponent} from './notification/notification.component';
 
 import { MatDialogModule } from '@angular/material';
-import {DeleteAccountComponent} from './deleteaccount/deleteaccount.component'
+import {DeleteAccountComponent} from './deleteaccount/deleteaccount.component';
 import {DeleteNNotificationComponent} from './deletenotification/deletenotification.component';
-import {SignupComponent} from './signup/signup.component'
-import {ResetAccountComponent} from './resetaccount/resetaccount.component'
+
+import {DeleteAlertComponent} from './deletealert/deletealert.component';
+import {SignupComponent} from './signup/signup.component';
+import {ResetAccountComponent} from './resetaccount/resetaccount.component';
+
+import {AddnotiComponent} from './addnoti/addnoti.component';
 
 @NgModule({
   imports: [
@@ -40,10 +44,13 @@ import {ResetAccountComponent} from './resetaccount/resetaccount.component'
     AccountManagementComponent,
     DeleteAccountComponent,
     DeleteNNotificationComponent,
+    DeleteAlertComponent,
     SignupComponent,
-    ResetAccountComponent
+    ResetAccountComponent,
+    AddnotiComponent,
+    
   ],
-  entryComponents: [NotificationComponent,AccountManagementComponent,DeleteAccountComponent,
-    DeleteNNotificationComponent,SignupComponent,ResetAccountComponent],
+  entryComponents: [NotificationComponent,AccountManagementComponent,DeleteAccountComponent,DeleteAlertComponent,
+    DeleteNNotificationComponent,SignupComponent,ResetAccountComponent, AddnotiComponent],
 })
 export class SettingsModule { }

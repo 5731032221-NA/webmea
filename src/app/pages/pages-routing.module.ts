@@ -75,6 +75,11 @@ const routes: Routes = [
         .then(m => m.TablesModule),
     },
     {
+      path: 'facedetection',canActivate: [AuthGuard],
+      loadChildren: () => import('./facedetection/facedetection.module')
+        .then(m => m.FacedetectionModule),
+    },
+    {
       path: 'settings',canActivate: [AuthGuard],
       loadChildren: () => import('./settings/settings.module')
         .then(m => m.SettingsModule),

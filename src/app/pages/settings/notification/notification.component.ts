@@ -7,6 +7,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import { DeleteNNotificationComponent } from '../deletenotification/deletenotification.component'
+import { DeleteAlertComponent } from '../deletealert/deletealert.component'
+
+import { AddnotiComponent } from '../addnoti/addnoti.component'
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json'
@@ -43,10 +46,20 @@ export class NotificationComponent {
   email: string = '';
   Obj: any;
   evaIcons = [];
+  alerts: any[];
   checkoutForm;
-  displayedColumns = ['#','email', 'action'];
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, public dialog: MatDialog) {
+  addalert;
+  displayedColumns = ['#', 'email', 'action'];
+  // displayedColumns2 = ['#', 'รหัสพนักงาน', 'ชื่อ-สกุล', 'walk-in alert', 'walk-out alert', 'send to (email)', 'action'];
+  displayedColumns2 = ['#', 'รหัสพนักงาน', 'แจ้งเตือนขาเข้า', 'แจ้งเตือนขาออก', 'ส่งการแจ้งเตือน (email)', 'action'];
 
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, public dialog: MatDialog) {
+    this.addalert = this.formBuilder.group({
+      email: '',
+      walkinalert: false,
+      walkoutalert: false,
+      id: ''
+    });
     this.checkoutForm = this.formBuilder.group({
       email: ''
     });
@@ -54,6 +67,18 @@ export class NotificationComponent {
 
       this.emails = emails;
 
+    })
+
+    this.http.get<any[]>('http://192.169.118.5:3000/getalert').subscribe((alerts) => {
+      // console.log(alert);
+      alerts.forEach((element) => {
+        if(element.walkinalert == true) element['walkin'] = "yes";
+        else element['walkin'] = "no";
+
+        if(element.walkoutalert == true) element['walkout'] = "yes";
+        else element['walkout'] = "no";
+      })
+      this.alerts = alerts;
     })
     // this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
     //   .filter(icon => icon.indexOf('outline') === -1);
@@ -64,7 +89,7 @@ export class NotificationComponent {
     console.log("event", event);
     this.Obj = {
       email: event.email,
-      
+
     }
     console.log(this.Obj);
     // this.todos.push(this.todoObj);
@@ -99,6 +124,67 @@ export class NotificationComponent {
 
     });
   }
+
+  deleteDialog2(id, email): void {
+    const dialogRef = this.dialog.open(DeleteAlertComponent, {
+      width: '820px',
+      data: { id, email }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getalert').subscribe((alerts) => {
+        alerts.forEach((element) => {
+          if(element.walkinalert == true) element['walkin'] = "yes";
+          else element['walkin'] = "no";
+
+          if(element.walkoutalert == true) element['walkout'] = "yes";
+          else element['walkout'] = "no";
+        })
+        this.alerts = alerts;
+
+      })
+
+    });
+  }
+
+  addnotiDialog(): void {
+    const dialogRef = this.dialog.open(AddnotiComponent, {
+      width: '820px',
+      data: { }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getalert').subscribe((alerts) => {
+        alerts.forEach((element) => {
+          if(element.walkinalert == true) element['walkin'] = "yes";
+          else element['walkin'] = "no";
+
+          if(element.walkoutalert == true) element['walkout'] = "yes";
+          else element['walkout'] = "no";
+        })
+        this.alerts = alerts;
+
+      })
+
+    });
+  }
+
+  onSubmit(customerData) {
+    // console.log(customerData)
+    this.http.post<any>('http://192.169.118.5:3000/postalert', customerData, options).subscribe(done => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getalert').subscribe((alerts) => {
+
+        alerts.forEach((element) => {
+          if(element.walkinalert == true) element['walkin'] = "yes";
+          else element['walkin'] = "no";
+
+          if(element.walkoutalert == true) element['walkout'] = "yes";
+          else element['walkout'] = "no";
+        })
+        this.alerts = alerts;
+
+      })
+    })
+  }
+
 
 
 }

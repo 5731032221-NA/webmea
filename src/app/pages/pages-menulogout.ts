@@ -47,6 +47,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
         ],
     },
     {
+        title: 'Face Detection',
+        icon: 'video-outline',
+        children: [
+            {
+                title: 'Training',
+                // icon: 'clipboard-outline',
+                link: '/pages/facedetection/info',
+            },
+           
+        ],
+    },
+    {
         title: 'Settings',
         icon: 'settings-2-outline',
         children: [
