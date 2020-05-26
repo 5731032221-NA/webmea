@@ -89,7 +89,7 @@ export class InfoComponent implements OnInit {
                 element['title'] = pr.title;
                 element['nameem'] = pr.name;
                 element['surname'] = pr.surname;
-                element['per'] = "(" + (element.confidence * 100) + "%)";
+                element['per'] = "(" + (element.confidence * 100).toFixed(2) + "%)";
               }
 
             })
@@ -118,7 +118,20 @@ export class InfoComponent implements OnInit {
       data: { id, name, title, nameem, surname, rowid }
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + '2020-05-22').subscribe((cropinfo) => {
+      let date = this.model;
+
+    let date_ob = new Date(date.year, date.month - 1, date.day);
+
+    let day = ("0" + date_ob.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = date_ob.getFullYear();
+    
+    var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
+      this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
         this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
@@ -138,9 +151,9 @@ export class InfoComponent implements OnInit {
 
               })
 
-              element['canselect'] = false;
+              element['canselect'] = true;
             }
-            else element['canselect'] = true;
+            else element['canselect'] = false;
 
             this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
@@ -155,7 +168,7 @@ export class InfoComponent implements OnInit {
                   element['title'] = pr.title;
                   element['nameem'] = pr.name;
                   element['surname'] = pr.surname;
-                  element['per'] = "(" + (element.confidence * 100) + "%)";
+                  element['per'] = "(" + (element.confidence * 100).toFixed(2) + "%)";
                 }
 
               })
@@ -224,7 +237,7 @@ export class InfoComponent implements OnInit {
                 element['title'] = pr.title;
                 element['nameem'] = pr.name;
                 element['surname'] = pr.surname;
-                element['per'] = "(" + (element.confidence * 100) + "%)";
+                element['per'] = "(" + (element.confidence * 100).toFixed(2) + "%)";
               }
 
             })
