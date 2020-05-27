@@ -136,11 +136,9 @@ export class TreeGridComponent {
       // body: formData,
       headers: httpHeaders2,
     };
-    // Process checkout data here
-    // this.items = this.cartService.clearCart();
-    // console.log(customerData)
-    // customerData.append({"image":"https://oneteamblob.blob.core.windows.net/meapicture/"+customerData.id+".jpg"})
-    customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + ".jpg";
+    let ext = this.imageFile.name.split('.').pop()
+
+    customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + "."+ext;
     this.checkoutForm.reset();
     console.log(customerData.name)
     this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id, {}).subscribe(uploadid =>
