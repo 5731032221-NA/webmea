@@ -141,7 +141,7 @@ export class TreeGridComponent {
     customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + "."+ext;
     this.checkoutForm.reset();
     console.log(customerData.name)
-    this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id, {}).subscribe(uploadid =>
+    this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id +'/'+ext, {}).subscribe(uploadid =>
       this.http.post<any>('http://192.169.118.5:3000/upload', formData, options2).subscribe(upload =>
         this.http.post<any>('http://192.169.118.5:3000/posttrainimage', '{"id": "' + customerData.id + '","imageUrl": "' + customerData.image + '" }', options).subscribe(async (az1) => {
           customerData.faceid = await az1.personId;
