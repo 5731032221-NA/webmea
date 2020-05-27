@@ -138,10 +138,10 @@ export class TreeGridComponent {
     };
     let ext = this.imageFile.name.split('.').pop()
 
-    customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + "."+ext;
+    customerData.image = "https://oneteamblob.blob.core.windows.net/meapicture/" + customerData.id + "." + ext;
     this.checkoutForm.reset();
     console.log(customerData.name)
-    this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id +'/'+ext, {}).subscribe(uploadid =>
+    this.http.post<any>('http://192.169.118.5:3000/uploadid/' + customerData.id + '/' + ext, {}).subscribe(uploadid =>
       this.http.post<any>('http://192.169.118.5:3000/upload', formData, options2).subscribe(upload =>
         this.http.post<any>('http://192.169.118.5:3000/posttrainimage', '{"id": "' + customerData.id + '","imageUrl": "' + customerData.image + '" }', options).subscribe(async (az1) => {
           customerData.faceid = await az1.personId;
@@ -155,10 +155,11 @@ export class TreeGridComponent {
             this.http.post<any>('http://192.169.118.5:3000/postmeaprofile', customerData, options).subscribe(done => //console.log(done)
               // console.log(az1)
               this.http.post<any[]>('http://192.169.118.5:3000/adddefault', '{"url":"' + customerData.image + '", "id":"' + customerData.id + '"}', options).subscribe((adddefault) => {
+                this.http.post<any>('http://192.169.118.5:3000/insertsqlprofile'+customerData.id, customerData, options).subscribe(done => {//console.log(done)
 
-                this.spinner.hide();
-                this.router.navigate(['/pages/tables/table'])
-
+                  this.spinner.hide();
+                  this.router.navigate(['/pages/tables/table'])
+                })
               })
 
             )

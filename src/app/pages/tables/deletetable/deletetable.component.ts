@@ -83,7 +83,10 @@ export class DeletetableTableComponent {
       this.http.post<any>('http://192.169.118.5:3000/removefaceapi/', '{"faceid": "' + this.data.faceid + '" }', options).subscribe(az1 => {
         // console.log("hmm",az1);
         // this.spinner.hide();
-        this.dialogRef.close()
+        this.http.get<any[]>('http://192.169.118.5:3000/deletesqlprofile/' + this.data.nameid).subscribe((deletesql) => {
+          this.dialogRef.close()
+
+        })
 
       })
     })
