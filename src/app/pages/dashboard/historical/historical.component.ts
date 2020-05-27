@@ -369,7 +369,7 @@ export class HistoricalComponent {
 
 
     var date_ob = new Date();
-    date_ob.setDate(date_ob.getDate() );
+    date_ob.setDate(date_ob.getDate() - 1);
     let date = date_ob.getDate();
 
     // current month
