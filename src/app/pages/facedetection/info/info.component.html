@@ -1,37 +1,40 @@
-<div class="frame">
+<nb-card>
+  <nb-card-header>
+    <div style="color: #ff7701;">&#9125; Traning</div>
+  </nb-card-header>
 
-  <form class="form-inline">
-    <div class="form-group">
-      <div class="input-group">
-        <input class="form-control" placeholder="yyyy-mm-dd" 
-               name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
-               (dateSelect)="onDateSelection($event)"
-               >
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt fa-fw"></i></button>
+  <nb-card-body>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+            #d="ngbDatepicker" (dateSelect)="onDateSelection($event)">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                class="fas fa-calendar-alt fa-fw"></i></button>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
-  <div>
-    <table mdbTable style="width: 100%;">
-      <thead>
+    </form>
+    <div>
+      <table mdbTable style="width: 100%;">
+        <thead>
 
-        <tr class="tablebg">
-          <th>เวลา</th>
-          <th>รูปภาพ</th>
-          <th>พนักงานที่ระบบคาดเดา</th>
-          <th>#</th>
-          <!-- <th>#</th> -->
-          <th>พนักงานที่ระบบเรียนรู้</th>
-        </tr>
+          <tr class="tablebg">
+            <th>เวลา</th>
+            <th>รูปภาพ</th>
+            <th>พนักงานที่ระบบคาดเดา</th>
+            <th>#</th>
+            <!-- <th>#</th> -->
+            <th>พนักงานที่ระบบเรียนรู้</th>
+          </tr>
 
 
-      </thead>
-      <tbody>
-        <tr mdbTableCol
-          *ngFor="let el of dataSource |  paginate: {id: 'info', currentPage: p2, itemsPerPage: itemsPerPage2 };">
-          <!-- <td>{{el.Date}}</td>
+        </thead>
+        <tbody>
+          <tr mdbTableCol
+            *ngFor="let el of dataSource |  paginate: {id: 'info', currentPage: p2, itemsPerPage: itemsPerPage2 };">
+            <!-- <td>{{el.Date}}</td>
           <td>{{el.checkin.emotion.gender}}</td>
           <td>{{el.checkin.emotion.age}}</td>
           <td>{{el.checkin.time}}</td>
@@ -40,31 +43,35 @@
           <td>{{el.checkout.emotion.age}}</td>
           <td>{{el.checkout.time}}</td>
           <td>{{el.emotion2}}</td> -->
-          <td>{{el.time}}</td>
-          <td> <img class="tb" [src]="el.image1" /></td>
-          <td>{{el.detected}} - {{el.title}} {{el.nameem}} {{el.surname}} {{el.per}}</td> 
-          <!--  - {{el.title}} {{el.name}} {{el.surname}} {{el.per}} -->
-          <!-- <form> -->
-          
-          
-          <select  (change)="trainDialog($event.target.value,el.name,el.title,el.nameem,el.surname,el._id) " [disabled]="el.canselect" >
-            <option *ngFor="let item of listmea" [ngValue]="item" >{{item.id}} - {{item.title}} {{item.name}} {{item.surname}}</option>
-          </select>
+            <td>{{el.time}}</td>
+            <td> <img class="tb" [src]="el.image1" /></td>
+            <td>{{el.detected}} - {{el.title}} {{el.nameem}} {{el.surname}} {{el.per}}</td>
+            <!--  - {{el.title}} {{el.name}} {{el.surname}} {{el.per}} -->
+            <!-- <form> -->
+
+
+            <select (change)="trainDialog($event.target.value,el.name,el.title,el.nameem,el.surname,el._id) "
+              [disabled]="el.canselect">
+              <option *ngFor="let item of listmea" [ngValue]="item">{{item.id}} - {{item.title}} {{item.name}}
+                {{item.surname}}</option>
+            </select>
             <!-- </form> -->
-          <!-- <button nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;"
+            <!-- <button nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;"
               id="edit" (click)="trainDialog(el.name, item)">&nbsp;train</button> -->
-          <td>{{el.train}} - {{el.ttitle}} {{el.tnameem}} {{el.tsurname}} </td>
-          
+            <td>{{el.train}} - {{el.ttitle}} {{el.tnameem}} {{el.tsurname}} </td>
 
 
-        </tr>
-      </tbody>
 
-    </table>
-  </div>
-  <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls>
+          </tr>
+        </tbody>
 
-  <!-- <div mat-dialog-actions>
+      </table>
+    </div>
+    <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls>
+
+    <!-- <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Close</button>
   </div> -->
-</div>
+    <!-- </div> -->
+  </nb-card-body>
+</nb-card>
