@@ -214,12 +214,42 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
 
       this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female').subscribe((res) => {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
 
       this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male').subscribe((res) => {
@@ -258,6 +288,21 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
 
       this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/happy').subscribe((res) => {
@@ -265,6 +310,21 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
       this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/happy').subscribe((res) => {
         // this.happy = [];
@@ -302,6 +362,21 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
 
       this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/unhappy').subscribe((res) => {
@@ -309,6 +384,21 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
       this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/unhappy').subscribe((res) => {
         // this.happy = [];
@@ -347,12 +437,42 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
 
       this.http.get<any>('http://192.169.118.5:3000/getcountexitbygender/female/neutral').subscribe((res) => {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
+        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
+  
+        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
+        if (res.entry == 0) {
+          this.femaleavgwalkin = "--:--";
+        } else {
+          this.femaleavgwalkin = ("0" + (Math.floor(ihh) + Math.floor(imm / 60))).slice(-2) + ":" + ("0" + imm).slice(-2);
+        }
+        if (res.exit == 0) {
+          this.femaleavgwalkout = "--:--";
+        } else {
+          this.femaleavgwalkout = ("0" + (Math.floor(ohh) + Math.floor(omm / 60))).slice(-2) + ":" + ("0" + omm).slice(-2);
+        }
       })
       this.http.get<any>('http://192.169.118.5:3000/getgrapghagebygender/male/neutral').subscribe((res) => {
         // this.happy = [];
@@ -460,10 +580,10 @@ export class DailyComponent {
       this.malecount = res.entry + res.exit;
       this.maleentrycount = res.entry;
       this.maleexitcount = res.exit;
-      let ihh = res.entryhh / parseInt(res.entry);
+      let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
       let imm = (ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry))
 
-      let ohh = res.exithh / parseInt(res.exit);
+      let ohh = Math.ceil(res.exithh / parseInt(res.exit));
       let omm = (ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit))
 
       if (res.entry == 0) {
@@ -485,10 +605,10 @@ export class DailyComponent {
       this.femalecount = res.entry + res.exit;
       this.femaleentrycount = res.entry;
       this.femaleexitcount = res.exit;
-      let ihh = res.entryhh / parseInt(res.entry);
+      let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
       let imm = (ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry))
 
-      let ohh = res.exithh / parseInt(res.exit);
+      let ohh = Math.ceil(res.exithh / parseInt(res.exit));
       let omm = (ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit))
       if (res.entry == 0) {
         this.femaleavgwalkin = "--:--";
