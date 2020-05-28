@@ -54,9 +54,9 @@ export class InfoComponent implements OnInit {
 
     var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +date).slice(-2);
 
-    this.http.get<any[]>('http:192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
-      this.http.get<any[]>('http:192.169.118.5:3000/getmeaprofile').subscribe(profile => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
 
 
@@ -77,7 +77,7 @@ export class InfoComponent implements OnInit {
           }
           else element['canselect'] = false;
 
-          this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
             element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
@@ -134,9 +134,9 @@ export class InfoComponent implements OnInit {
     
     var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
 
-      this.http.get<any[]>('http:192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
-        this.http.get<any[]>('http:192.169.118.5:3000/getmeaprofile').subscribe(profile => {
+        this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
 
 
@@ -158,7 +158,7 @@ export class InfoComponent implements OnInit {
             }
             else element['canselect'] = false;
 
-            this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+            this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
               element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
@@ -204,9 +204,9 @@ export class InfoComponent implements OnInit {
     
     var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
     // console.log(querydate)
-    this.http.get<any[]>('http:192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
+    this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
-      this.http.get<any[]>('http:192.169.118.5:3000/getmeaprofile').subscribe(profile => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
 
 
@@ -227,7 +227,7 @@ export class InfoComponent implements OnInit {
           }
           else element['canselect'] = false;
 
-          this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
             element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
@@ -276,9 +276,9 @@ export class InfoComponent implements OnInit {
       
       var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
   
-        this.http.get<any[]>('http:192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
+        this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
   
-          this.http.get<any[]>('http:192.169.118.5:3000/getmeaprofile').subscribe(profile => {
+          this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
   
   
   
@@ -300,7 +300,7 @@ export class InfoComponent implements OnInit {
               }
               else element['canselect'] = false;
   
-              this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+              this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
   
                 element['image1'] = 'data:image/jpg;base64,' + image['data'];
   

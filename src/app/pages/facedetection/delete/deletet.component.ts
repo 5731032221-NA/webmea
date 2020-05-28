@@ -39,7 +39,7 @@ export class DeleteComponent {
     private route: ActivatedRoute,
     public dialogRef: MatDialogRef<DeleteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
      
         this.pic = 'data:image/jpg;base64,' + done['data'];
       })
@@ -51,7 +51,7 @@ export class DeleteComponent {
 
   //   this.route.queryParams.subscribe(params => {
   //     // console.log("params",params);
-  //     this.http.get<any[]>('http:192.169.118.5:3000/getmeaprofile/' + this.data.id).subscribe((res) => {
+  //     this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile/' + this.data.id).subscribe((res) => {
   //       this.myDefaultValue = res[0].id
   //       this.checkoutForm = this.formBuilder.group({
   //         // id: res[0].id,
@@ -69,7 +69,7 @@ export class DeleteComponent {
 
 
   onSubmit() {
-    this.http.delete<any>('http:192.169.118.5:3000/deleteropinfo/' + this.data.id, {}).subscribe((delet) => {
+    this.http.delete<any>('http://192.169.118.5:3000/deleteropinfo/' + this.data.id, {}).subscribe((delet) => {
       this.dialogRef.close()
     })
   }
