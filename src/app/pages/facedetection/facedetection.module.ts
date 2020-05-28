@@ -15,6 +15,9 @@ import {TrainComponent} from './train/train.component'
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule} from '@angular/forms';
+
+import {DeleteComponent} from './delete/deletet.component';
+
 @NgModule({
   imports: [
     NbSelectModule,
@@ -37,8 +40,9 @@ import { FormsModule} from '@angular/forms';
   ],
   declarations: [
     ...routedComponents,
-    TrainComponent
+    TrainComponent,
+    DeleteComponent
   ],
-  entryComponents: [TrainComponent],
+  entryComponents: [TrainComponent,DeleteComponent],
 })
 export class FacedetectionModule { }

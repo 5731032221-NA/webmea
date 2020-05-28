@@ -40,7 +40,7 @@ export class TrainComponent {
     private route: ActivatedRoute,
     public dialogRef: MatDialogRef<TrainComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
+      this.http.get<any[]>('http:192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
      
         this.pic = 'data:image/jpg;base64,' + done['data'];
       })
@@ -58,7 +58,7 @@ export class TrainComponent {
 
 
   onSubmit() {
-    this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name+'/'+this.data.id+'/'+this.data.rowid).subscribe((done) => {
+    this.http.get<any[]>('http:192.169.118.5:3000/traincropimage/' + this.data.name+'/'+this.data.id+'/'+this.data.rowid).subscribe((done) => {
      
       this.dialogRef.close()
     })

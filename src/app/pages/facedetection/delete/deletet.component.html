@@ -1,13 +1,14 @@
 <div class="frame">
   <nb-card>
     <nb-card-header>
-    เทรนรูปภาพพนักงาน
+    ลบข้อมูลพนักงาน
     </nb-card-header>  
     <nb-card-body style="background-color: white;">
-      <img class="tb" [src]="pic" />
     <div mat-dialog-content >
-
-      <p style="color: #FF7701; font-weight: bold; padding-top: 10px;">ท่านต้องการเทรนรูปนี้ให้กับพนักงาน รหัส {{data.id}} - {{data.title}} {{data.nameem}} {{data.surname}} ใช่หรือไม่?</p>
+      <img class="tb" [src]="pic" />
+      
+      <p style="color: #FF7701; font-weight: bold; padding-top: 10px;">ท่านต้องการลบข้อมูลนี้ใช่หรือไม่?</p>
+      <p style="color: rgb(153, 147, 147); font-weight: bold;">คำเตือน ! หากลบแล้ว ท่านจะไม่สามารถกู้ข้อมูลนี้คืนได้อีก ...</p>
       <div md-dialog-actions >
         
         <button   nbButton style="background-color: #FF7701; color: white; border-color: #ffffff;" (click)="onSubmit()">ยืนยัน</button>
