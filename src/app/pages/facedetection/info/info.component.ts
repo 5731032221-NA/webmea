@@ -97,8 +97,10 @@ export class InfoComponent implements OnInit {
           }
         })
 
-
-        this.listmea = [{ 'name': " เลือกพนักงาน -" }, ...profile];
+        let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+        list.sort((a, b) => (a.id - b.id));
+        this.listmea = list;
+        // this.listmea = [{ 'name': " เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
         // console.log("aa", this.dataSource);
         this.spinner.hide();
@@ -178,8 +180,10 @@ export class InfoComponent implements OnInit {
             }
           })
 
-
-          this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+          let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+          list.sort((a, b) => (a.id - b.id));
+          this.listmea = list;
+          // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
           this.dataSource = cropinfo;
           // console.log("aa", this.dataSource);
           this.spinner.hide();
@@ -247,8 +251,10 @@ export class InfoComponent implements OnInit {
           }
         })
 
-
-        this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+        let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+        list.sort((a, b) => (a.id - b.id));
+        this.listmea = list;
+        // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
         // console.log("aa", this.dataSource);
         this.spinner.hide();
@@ -320,8 +326,10 @@ export class InfoComponent implements OnInit {
               }
             })
   
-  
-            this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+            let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+            list.sort((a, b) => (a.id - b.id));
+            this.listmea = list;
+            // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
             this.dataSource = cropinfo;
             // console.log("aa", this.dataSource);
             this.spinner.hide();
