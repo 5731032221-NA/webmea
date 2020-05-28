@@ -46,6 +46,7 @@ export class SmartTableComponent {
           })
 
         })
+        profile.sort((a, b) => (a.id - b.id));
         this.dataSource = profile;
         this.spinner.hide();
       })
@@ -88,6 +89,7 @@ export class SmartTableComponent {
           })
 
         })
+        profile.sort((a, b) => (a.id - b.id));
         this.dataSource = profile;
         this.spinner.hide();
       })
@@ -146,6 +148,7 @@ export class SmartTableComponent {
           })
 
         })
+        profile.sort((a, b) => (a.id - b.id));
         this.dataSource = profile;
         this.spinner.hide();
       })
