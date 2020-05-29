@@ -197,7 +197,7 @@ export class HistoricalComponent {
           // console.log("checkin",result)
           let ontime = 0;
           let late = 0;
-          let absence = result.length;
+          let absence = result2.length;
           let overtime = 0;
 
           result.forEach(element => {
