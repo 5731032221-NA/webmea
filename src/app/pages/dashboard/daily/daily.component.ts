@@ -214,10 +214,10 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.maleavgwalkin = "--:--";
@@ -235,10 +235,10 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.femaleavgwalkin = "--:--";
@@ -288,10 +288,10 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.maleavgwalkin = "--:--";
@@ -310,10 +310,10 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.femaleavgwalkin = "--:--";
@@ -362,10 +362,10 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.maleavgwalkin = "--:--";
@@ -384,10 +384,10 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.femaleavgwalkin = "--:--";
@@ -437,10 +437,10 @@ export class DailyComponent {
         this.malecount = res.entry + res.exit;
         this.maleentrycount = res.entry;
         this.maleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.maleavgwalkin = "--:--";
@@ -458,10 +458,10 @@ export class DailyComponent {
         this.femalecount = res.entry + res.exit;
         this.femaleentrycount = res.entry;
         this.femaleexitcount = res.exit;
-        let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+        let ihh = Math.floor(res.entryhh / parseInt(res.entry));
         let imm = parseInt((ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry)).toFixed(0))
   
-        let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+        let ohh = Math.floor(res.exithh / parseInt(res.exit));
         let omm = parseInt((ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit)).toFixed(0))
         if (res.entry == 0) {
           this.femaleavgwalkin = "--:--";
@@ -580,10 +580,10 @@ export class DailyComponent {
       this.malecount = res.entry + res.exit;
       this.maleentrycount = res.entry;
       this.maleexitcount = res.exit;
-      let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+      let ihh = Math.floor(res.entryhh / parseInt(res.entry));
       let imm = (ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry))
 
-      let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+      let ohh = Math.floor(res.exithh / parseInt(res.exit));
       let omm = (ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit))
 
       if (res.entry == 0) {
@@ -605,10 +605,10 @@ export class DailyComponent {
       this.femalecount = res.entry + res.exit;
       this.femaleentrycount = res.entry;
       this.femaleexitcount = res.exit;
-      let ihh = Math.ceil(res.entryhh / parseInt(res.entry));
+      let ihh = Math.floor(res.entryhh / parseInt(res.entry));
       let imm = (ihh - Math.floor(ihh)) * 60 + Math.ceil(res.entrymm / parseInt(res.entry))
 
-      let ohh = Math.ceil(res.exithh / parseInt(res.exit));
+      let ohh = Math.floor(res.exithh / parseInt(res.exit));
       let omm = (ohh - Math.floor(ohh)) * 60 + Math.ceil(res.exitmm / parseInt(res.exit))
       if (res.entry == 0) {
         this.femaleavgwalkin = "--:--";
