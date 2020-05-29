@@ -807,7 +807,7 @@ export class DailyComponent {
                 }
                 else {
                   this.bestempout = element.checkout;
-                  this.bestemphour = Math.abs(Math.floor(bestemphighestVal / 60)) + "." + ("0" + (bestemphighestVal % 60)).slice(-2);
+                  this.bestemphour = Math.abs(Math.floor(bestemphighestVal / 60)) + "." + ("0" + Math.abs((bestemphighestVal % 60))).slice(-2);
                 }
                 var hap = (element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 50;
                 if (element.checkoutEmo != "") {
