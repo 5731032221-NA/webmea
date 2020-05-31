@@ -30,6 +30,7 @@ export class InfoComponent implements OnInit {
   // datecal: any | null;
   model: any;
   date: { year: number, month: number };
+  empty: boolean = false;
   // absoluteIndex(indexOnPage: number): number {
   //   return this.itemsPerPage * (this.p - 1) + indexOnPage;
   // }
@@ -102,6 +103,11 @@ export class InfoComponent implements OnInit {
         this.listmea = list;
         // this.listmea = [{ 'name': " เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
+        if(this.dataSource.length > 0){
+          this.empty = false;
+        }else{
+          this.empty = true;
+        }
         // console.log("aa", this.dataSource);
         this.spinner.hide();
       })
@@ -214,6 +220,11 @@ export class InfoComponent implements OnInit {
         this.listmea = list;
         // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
+        if(this.dataSource.length > 0){
+          this.empty = false;
+        }else{
+          this.empty = true;
+        }
         // console.log("aa", this.dataSource);
         this.spinner.hide();
       })
@@ -230,6 +241,11 @@ export class InfoComponent implements OnInit {
         this.dataSource = this.dataSource.filter(function (obj) {
           return obj._id !== id; // Or whatever value you want to use
         });
+      }
+      if(this.dataSource.length > 0){
+        this.empty = false;
+      }else{
+        this.empty = true;
       }
 
     });
