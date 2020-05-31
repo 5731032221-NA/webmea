@@ -75,6 +75,9 @@
 
       </table>
     </div>
+    <div style="height: 100px; align-items: center; text-align: center;margin-top: 10%;" *ngIf="empty">
+      <a style="font-size: 50px; align-self: center; color: #777;">NO DATA</a>
+    </div>
     <div style="text-align: center;padding-top: 10px;">
     <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls></div>
 
