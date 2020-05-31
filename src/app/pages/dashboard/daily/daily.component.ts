@@ -807,7 +807,7 @@ export class DailyComponent {
                 }
                 else {
                   this.bestempout = element.checkout;
-                  this.bestemphour = Math.abs(Math.floor(bestemphighestVal / 60)) + "." + ("0" + Math.abs((bestemphighestVal % 60))).slice(-2);
+                  this.bestemphour = Math.floor(Math.abs(bestemphighestVal / 60)) + "." + ("0" + Math.abs((bestemphighestVal % 60))).slice(-2);
                 }
                 var hap = (element.checkinEmotion.emotion.happiness + element.checkinEmotion.emotion.surprise) * 50;
                 if (element.checkoutEmo != "") {
@@ -831,7 +831,7 @@ export class DailyComponent {
                   // this.mealoverout = element.checkout;
                   if (element.checkout != "") {
                     this.mealoverout = element.checkout;
-                    this.mealoverhour = Math.abs(Math.floor(getworktime[MEAloverval2] / 60)) + "." + ("0" + Math.abs((getworktime[MEAloverval2] % 60))).slice(-2);
+                    this.mealoverhour = Math.floor(Math.abs(getworktime[MEAloverval2] / 60)) + "." + ("0" + Math.abs((getworktime[MEAloverval2] % 60))).slice(-2);
                   }
                   else {
                     this.mealoverout = "--:--";
@@ -855,7 +855,7 @@ export class DailyComponent {
                   // this.mealoverout = element.checkout;
                   if (element.checkout != "") {
                     this.mealoverout = element.checkout;
-                    this.mealoverhour = Math.abs(Math.floor(getworktime[MEAloverval2] / 60)) + "." + ("0" + Math.abs((getworktime[MEAloverval2] % 60))).slice(-2);
+                    this.mealoverhour = Math.floor(Math.abs(getworktime[MEAloverval2] / 60)) + "." + ("0" + Math.abs((getworktime[MEAloverval2] % 60))).slice(-2);
                   }
                   else {
                     this.mealoverout = "--:--";
@@ -881,7 +881,7 @@ export class DailyComponent {
                 // this.happyout = element.checkout;
                 if (element.checkout != "") {
                   this.happyout = element.checkout;
-                  this.happyhour = Math.abs(Math.floor(getworktime[happyval] / 60)) + "." + ("0" + Math.abs((getworktime[happyval] % 60))).slice(-2);
+                  this.happyhour = Math.floor(Math.abs(getworktime[happyval] / 60)) + "." + ("0" + Math.abs((getworktime[happyval] % 60))).slice(-2);
                 }
                 else {
                   this.happyout = "--:--";
