@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 
 import { NgxSpinnerService } from "ngx-spinner";
-import { NgbDate,NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { TrainComponent } from '../train/train.component'
 import { DeleteComponent } from '../delete/deletet.component'
 
@@ -52,7 +52,7 @@ export class InfoComponent implements OnInit {
 
     this.model = { year: year, month: month, day: date };
 
-    var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +date).slice(-2);
+    var querydate = year + "-" + ("0" + month).slice(-2) + "-" + ("0" + date).slice(-2);
 
     this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
@@ -122,79 +122,37 @@ export class InfoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
 
-    let date = this.model;
+      if (result) {
 
-    let date_ob = new Date(date.year, date.month - 1, date.day);
-
-    let day = ("0" + date_ob.getDate()).slice(-2);
-
-    // current month
-    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-
-    // current year
-    let year = date_ob.getFullYear();
-    
-    var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
-
-      this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
-
-        this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
+        for (var i = 0; i < this.dataSource.length; i++) {
+          if (this.dataSource[i]._id === rowid) {
+            this.dataSource[i].train = id;
+            this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
 
-
-          cropinfo.forEach((element) => {
-
-
-            if (element["train"] != "") {
-              console.log("train")
+              // console.log("train")
               profile.forEach((pr) => {
-                if (element.train == pr.id) {
-                  element['ttitle'] = pr.title;
-                  element['tnameem'] = pr.name;
-                  element['tsurname'] = pr.surname;
+                if (id == pr.id) {
+                  this.dataSource[i]['ttitle'] = pr.title;
+                  this.dataSource[i]['tnameem'] = pr.name;
+                  this.dataSource[i]['tsurname'] = pr.surname;
                 }
 
               })
 
-              element['canselect'] = false;
-            }
-            else element['canselect'] = false;
-
-            this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
-
-              element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
 
             })
-
-            if (element.detected != "") {
-              profile.forEach((pr) => {
-                if (element.detected == pr.id) {
-                  element['title'] = pr.title;
-                  element['nameem'] = pr.name;
-                  element['surname'] = pr.surname;
-                  element['per'] = "(" + (element.confidence * 100).toFixed(2) + "%)";
-                }
-
-              })
-            }
-          })
-
-          let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
-          list.sort((a, b) => (a.id - b.id));
-          this.listmea = list;
-          // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
-          this.dataSource = cropinfo;
-          // console.log("aa", this.dataSource);
-          this.spinner.hide();
-        })
-      })
+            break;
+          }
+        }
+      }
 
     });
   }
 
   onDateSelection(date: NgbDate) {
-    this.model =date;
+    this.model = date;
 
     let date_ob = new Date(date.year, date.month - 1, date.day);
 
@@ -205,8 +163,8 @@ export class InfoComponent implements OnInit {
 
     // current year
     let year = date_ob.getFullYear();
-    
-    var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
+
+    var querydate = year + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2);
     // console.log(querydate)
     this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
 
@@ -262,83 +220,21 @@ export class InfoComponent implements OnInit {
     })
   }
 
-  deleteDialog(id ,name): void {
+  deleteDialog(id, name): void {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '820px',
-      data: { id ,name }
+      data: { id, name }
     });
     dialogRef.afterClosed().subscribe(result => {
-      let date = this.model;
+      if (result) {
+        this.dataSource = this.dataSource.filter(function (obj) {
+          return obj._id !== id; // Or whatever value you want to use
+        });
+      }
 
-      let date_ob = new Date(date.year, date.month - 1, date.day);
-  
-      let day = ("0" + date_ob.getDate()).slice(-2);
-  
-      // current month
-      let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-  
-      // current year
-      let year = date_ob.getFullYear();
-      
-      var querydate = year +"-"+ ("0" +month).slice(-2) +"-"+ ("0" +day).slice(-2);
-  
-        this.http.get<any[]>('http://192.169.118.5:3000/getcropinfobydate/' + querydate).subscribe((cropinfo) => {
-  
-          this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
-  
-  
-  
-            cropinfo.forEach((element) => {
-  
-  
-              if (element["train"] != "") {
-                console.log("train")
-                profile.forEach((pr) => {
-                  if (element.train == pr.id) {
-                    element['ttitle'] = pr.title;
-                    element['tnameem'] = pr.name;
-                    element['tsurname'] = pr.surname;
-                  }
-  
-                })
-  
-                element['canselect'] = false;
-              }
-              else element['canselect'] = false;
-  
-              this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
-  
-                element['image1'] = 'data:image/jpg;base64,' + image['data'];
-  
-  
-              })
-  
-              if (element.detected != "") {
-                profile.forEach((pr) => {
-                  if (element.detected == pr.id) {
-                    element['title'] = pr.title;
-                    element['nameem'] = pr.name;
-                    element['surname'] = pr.surname;
-                    element['per'] = "(" + (element.confidence * 100).toFixed(2) + "%)";
-                  }
-  
-                })
-              }
-            })
-  
-            let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
-            list.sort((a, b) => (a.id - b.id));
-            this.listmea = list;
-            // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
-            this.dataSource = cropinfo;
-            // console.log("aa", this.dataSource);
-            this.spinner.hide();
-          })
-        })
-  
     });
   }
-  
+
 
   ngOnInit() {
   }

@@ -60,7 +60,7 @@ export class TrainComponent {
   onSubmit() {
     this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name+'/'+this.data.id+'/'+this.data.rowid).subscribe((done) => {
      
-      this.dialogRef.close()
+      this.dialogRef.close(true)
     })
 
 

@@ -70,7 +70,7 @@ export class DeleteComponent {
 
   onSubmit() {
     this.http.delete<any>('http://192.169.118.5:3000/deleteropinfo/' + this.data.id, {}).subscribe((delet) => {
-      this.dialogRef.close()
+      this.dialogRef.close(true)
     })
   }
 
