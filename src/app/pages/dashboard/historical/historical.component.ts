@@ -98,9 +98,14 @@ export class HistoricalComponent {
 
         });
 
-        res[0].data = [...res[0].data, [Date.parse(date_today.toString()), neutral]]
-        res[1].data = [...res[1].data, [Date.parse(date_today.toString()), happy]]
-        res[2].data = [...res[2].data, [Date.parse(date_today.toString()), unhappy]]
+        // res[0].data = [...res[0].data, [Date.parse(date_today.toString()), neutral]]
+        // res[1].data = [...res[1].data, [Date.parse(date_today.toString()), happy]]
+        // res[2].data = [...res[2].data, [Date.parse(date_today.toString()), unhappy]]
+
+        
+        res[0].data = [...res[0].data, [Date.parse(date_today.toString()), unhappy]]
+        res[1].data = [...res[1].data, [Date.parse(date_today.toString()), neutral]]
+        res[2].data = [...res[2].data, [Date.parse(date_today.toString()), happy]]
 
         this.stock = new StockChart({
           chart: {
@@ -226,10 +231,15 @@ export class HistoricalComponent {
 
           });
 
-          res[0].data = [...res[0].data, [Date.parse(date_today.toString()), ontime]]
-          res[1].data = [...res[1].data, [Date.parse(date_today.toString()), late]]
-          res[2].data = [...res[2].data, [Date.parse(date_today.toString()), absence]]
-          res[3].data = [...res[3].data, [Date.parse(date_today.toString()), overtime]]
+          // res[0].data = [...res[0].data, [Date.parse(date_today.toString()), ontime]]
+          // res[1].data = [...res[1].data, [Date.parse(date_today.toString()), late]]
+          // res[2].data = [...res[2].data, [Date.parse(date_today.toString()), absence]]
+          // res[3].data = [...res[3].data, [Date.parse(date_today.toString()), overtime]]
+
+          res[0].data = [...res[0].data, [Date.parse(date_today.toString()), absence]]
+          res[1].data = [...res[1].data, [Date.parse(date_today.toString()), ontime]]
+          res[2].data = [...res[2].data, [Date.parse(date_today.toString()), overtime]]
+          res[3].data = [...res[3].data, [Date.parse(date_today.toString()), late]]
 
           // this.dataemo = res
           this.stock2 = new StockChart({
