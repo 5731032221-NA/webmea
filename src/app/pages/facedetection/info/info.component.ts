@@ -84,6 +84,14 @@ export class InfoComponent implements OnInit {
 
 
           })
+          try {
+            if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
+            else if (element['camera']  == 2) element['inout'] = "ขาออก A"
+            else if (element['camera']  == 3) element['inout'] = "ขาเข้า B"
+            else if (element['camera']  == 4) element['inout'] = "ขาออก B"
+          } catch (err) {
+            element['inout'] = "-"
+          }
 
           if (element.detected != "") {
             profile.forEach((pr) => {
@@ -201,6 +209,15 @@ export class InfoComponent implements OnInit {
 
 
           })
+
+          try {
+            if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
+            else if (element['camera']  == 2) element['inout'] = "ขาออก A"
+            else if (element['camera']  == 3) element['inout'] = "ขาเข้า B"
+            else if (element['camera']  == 4) element['inout'] = "ขาออก B"
+          } catch (err) {
+            element['inout'] = "-"
+          }
 
           if (element.detected != "") {
             profile.forEach((pr) => {
