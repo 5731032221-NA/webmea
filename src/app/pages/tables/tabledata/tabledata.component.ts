@@ -22,7 +22,7 @@ import { EditComponent } from '../edit/edit.component'
   styleUrls: ['./tabledata.component.scss'],
 })
 export class SmartTableComponent {
-  displayedColumns = ['#', 'รหัสพนักงาน', 'ชื่อ - สกุล', 'ตำแหน่ง', 'อีเมล์', 'เข้างาน', 'ออกงาน','เก็บข้อมูลเข้า/ออกงานเมื่อ', 'action'];
+  displayedColumns = ['#', 'รหัสพนักงาน', 'ชื่อ - สกุล', 'ตำแหน่ง', 'อีเมล์', 'เข้างาน', 'ออกงาน','% ตรวจจับ', 'action'];
   dataSource: any[];
   p: number = 1;
 
@@ -36,6 +36,7 @@ export class SmartTableComponent {
           element['checkin'] = '-';
           element['checkout'] = '-';
           element['decimage'] = 'data:image/jpg;base64,' + element['encimage'];
+          element['per'] = element['individual_confidence']*100;
           checkin.forEach((tt) => {
 
             if (element.id == tt.id) {
