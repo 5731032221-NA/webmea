@@ -170,7 +170,7 @@ export class SmartTableComponent {
         // let dataSource = this.dataSource
         this.dataSource.forEach(element => {
 
-          if (element['id'] == id_detected) element['individual_confidence'] = result;
+          if (element['id'] == id_detected) element['per'] = result;
           //  element['per'] = "(" + result  + "%)";
         });
         // this.dataSource = dataSource
