@@ -6,7 +6,7 @@
   <nb-card-body>
     <form class="form-inline">
       <div class="form-group">
-        <div class="input-group"> 
+        <div class="input-group">
           <a style="margin-top: 10px; padding-right: 6px;">Please Select Date </a>
           <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
             #d="ngbDatepicker" (dateSelect)="onDateSelection($event)">
@@ -22,14 +22,23 @@
         <thead>
 
           <tr class="tablebg">
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">#</th>
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">เวลาที่พบ</th>
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">ขาเข้า/ขาออก</th>
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">พนักงานที่ระบบวิเคราะห์</th>
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">เลือกพนักงานให้ระบบเรียนรู้</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">#
+            </th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              เวลาที่พบ</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              ขาเข้า/ขาออก</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              พนักงานที่ระบบวิเคราะห์</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              เก็บข้อมูลเข้า/ออกงานเมื่อ</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              เลือกพนักงานให้ระบบเรียนรู้</th>
             <!-- <th>#</th> -->
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">พนักงานที่ระบบเรียนรู้</th>
-            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">ลบข้อมูล</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              พนักงานที่ระบบเรียนรู้</th>
+            <th style="font-size: 15px; height: 40px; background-color: #EBEBEB; color: #717171;  text-align: center;">
+              ลบข้อมูล</th>
           </tr>
 
 
@@ -46,26 +55,35 @@
           <td>{{el.checkout.emotion.age}}</td>
           <td>{{el.checkout.time}}</td>
           <td>{{el.emotion2}}</td> -->
-           
+
             <td> <img class="tb" [src]="el.image1" /></td>
             <td style="color:#FF7701 ;">{{el.time}}</td>
             <td style="color:#FF7701 ;">{{el.inout}}</td>
-            <td style="text-align: left; padding-left: 10px;">{{el.detected}} - {{el.title}} {{el.nameem}} {{el.surname}} {{el.per}}</td>
+            <td style="text-align: left; padding-left: 10px;">{{el.detected}} - {{el.title}} {{el.nameem}}
+              {{el.surname}} {{el.per}}</td>
             <!--  - {{el.title}} {{el.name}} {{el.surname}} {{el.per}} -->
             <!-- <form> -->
-
+            <td><a style="text-align: left; padding-left: 10px; size: 10px; ">มากกว่า
+                {{el.individual_confidence}}%</a><button nbButton status="warning"
+                style=" font-size: 12px; background-color: #FF7701; color: white;" type="button" class="close"
+                aria-label="Close" (click)="editDialog(el.detected,el.individual_confidence)">
+                <img src="../assets/images/edit.png" style="width: 14px; height: 13px; padding-top: 0px;" /></button>
+            </td>
 
             <td><select (change)="trainDialog($event.target.value,el.name,el.title,el.nameem,el.surname,el._id) "
-              [disabled]="el.canselect">
-              <option *ngFor="let item of listmea" [ngValue]="item">{{item.id}} - {{item.title}} {{item.name}}
-                {{item.surname}}</option>
-            </select></td>
+                [disabled]="el.canselect">
+                <option *ngFor="let item of listmea" [ngValue]="item">{{item.id}} - {{item.title}} {{item.name}}
+                  {{item.surname}}</option>
+              </select></td>
             <!-- </form> -->
             <!-- <button nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;"
               id="edit" (click)="trainDialog(el.name, item)">&nbsp;train</button> -->
-            <td style="text-align: left; padding-left: 10px;" >{{el.train}} - {{el.ttitle}} {{el.tnameem}} {{el.tsurname}} </td>
+            <td style="text-align: left; padding-left: 10px;">{{el.train}} - {{el.ttitle}} {{el.tnameem}}
+              {{el.tsurname}} </td>
             <td>
-              <button nbButton style=" font-size: 12px; background-color: rgb(122, 118, 118); border-color: #C7C7C7; color: white;" type="button" class="close" aria-label="Close" (click)="deleteDialog(el._id,el.name)">
+              <button nbButton
+                style=" font-size: 12px; background-color: rgb(122, 118, 118); border-color: #C7C7C7; color: white;"
+                type="button" class="close" aria-label="Close" (click)="deleteDialog(el._id,el.name)">
                 <img src="../assets/images/delete.png" style="width: 14px; height: 13px;" />
               </button>
             </td>
@@ -80,7 +98,8 @@
       <a style="font-size: 50px; align-self: center; color: #777;">NO DATA</a>
     </div>
     <div style="text-align: center;padding-top: 10px;">
-    <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls></div>
+      <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls>
+    </div>
 
     <!-- <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Close</button>
