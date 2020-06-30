@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule} from '@angular/forms';
 
 import {DeleteComponent} from './delete/deletet.component';
+import {EditComponent} from './edit/edit.component'
 
 @NgModule({
   imports: [
@@ -41,8 +42,9 @@ import {DeleteComponent} from './delete/deletet.component';
   declarations: [
     ...routedComponents,
     TrainComponent,
-    DeleteComponent
+    DeleteComponent,
+    EditComponent
   ],
-  entryComponents: [TrainComponent,DeleteComponent],
+  entryComponents: [TrainComponent,DeleteComponent,EditComponent],
 })
 export class FacedetectionModule { }

@@ -12,6 +12,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {EditTableComponent} from './edittable/edittable.component'
 import {DeletetableTableComponent} from './deletetable/deletetable.component'
 import {AttendanceComponent} from './attendance/attendance.component'
+import {EditComponent} from './edit/edit.component'
 import { MatDialogModule } from '@angular/material';
 import { NgxSpinnerModule } from "ngx-spinner";
 
@@ -39,7 +40,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     EditTableComponent,
     DeletetableTableComponent,
     AttendanceComponent,
+    EditComponent,
   ],
-  entryComponents: [EditTableComponent,DeletetableTableComponent,AttendanceComponent],
+  entryComponents: [EditTableComponent,DeletetableTableComponent,AttendanceComponent,EditComponent],
 })
 export class TablesModule { }

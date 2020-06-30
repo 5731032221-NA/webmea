@@ -7,6 +7,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { NgbDate, NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { TrainComponent } from '../train/train.component'
 import { DeleteComponent } from '../delete/deletet.component'
+import { EditComponent} from '../edit/edit.component'
+
 
 @Component({
   selector: 'info-modal',
@@ -268,6 +270,31 @@ export class InfoComponent implements OnInit {
     });
   }
 
+  editDialog(id_detected, individual_confidence): void {
+    const dialogRef = this.dialog.open(EditComponent, {
+      width: '820px',
+      data: { id_detected, individual_confidence }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("afterClosed", result);
+      
+      if (result > 0) {
+        // let dataSource = this.dataSource
+        this.dataSource.forEach(element => {
+          
+          if(element['detected'] == id_detected)  element['individual_confidence'] = result;
+
+          //  element['per'] = "(" + result  + "%)";
+        });
+        // this.dataSource = dataSource
+        
+        
+      }
+     
+      
+
+    });
+  }
 
   ngOnInit() {
   }
