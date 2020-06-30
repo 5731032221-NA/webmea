@@ -23,7 +23,7 @@
           <td style="text-align: left;" (click)="attendanceDialog(el.id)">{{el.email}}</td>
           <td style="color:#1e76fa;" (click)="attendanceDialog(el.id)">{{el.checkin}}</td>
           <td style="color:#04d632;" (click)="attendanceDialog(el.id)">{{el.checkout}}</td>
-          <td><a><br></br><a style="text-align: left; padding-left: 10px; size: 10px; ">> {{el.per}}%</a></a><button
+          <td><a style="margin-top: 5px;"><a style="text-align: left; padding-left: 10px; size: 10px; ">> {{el.per}}%</a></a><button
               nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;" type="button"
               class="close" aria-label="Close" (click)="editDialog(el.id,el.per)">
               <img src="../assets/images/edit.png" style="width: 14px; height: 13px; padding-top: 0px;" /></button>
