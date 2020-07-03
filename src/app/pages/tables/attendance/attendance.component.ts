@@ -35,31 +35,37 @@ export class AttendanceComponent implements OnInit {
       this.surname = profile[0].surname;
       this.profileimage = 'data:image/jpg;base64,' + profile[0].encimage;
       this.http.get<any[]>('http://192.169.118.5:3000/attendanceimage/' + data.id).subscribe(async (attendance) => {
-        await attendance.sort(function(a, b) { return b.checkindatetime - a.checkindatetime; });  
+        await attendance.sort(function (a, b) { return b.checkindatetime - a.checkindatetime; });
         console.log("bb", attendance);
 
         attendance.forEach((element) => {
-          element['date'] =  element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
+          element['date'] = element.checkindatetime.substring(6, 8) + "-" + element.checkindatetime.substring(4, 6) + "-" + element.checkindatetime.substring(0, 4);
           //element['date'] =  element.checkindatetime.substring(6, 8) + "" + element.checkindatetime.substring(4, 6) + "" + element.checkindatetime.substring(2, 4); 
           if (element.checkout != '') {
             // console.log(element['showimg']);
             element['showimg'] = true;
             element['showimg2'] = false;
-            this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkoutImageCrop).subscribe((image2) => {
-              element['image2'] = 'data:image/jpg;base64,' + image2['data'];
-            })
+            try {
+              this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkoutImageCrop).subscribe((image2) => {
+                element['image2'] = 'data:image/jpg;base64,' + image2['data'];
+              })
+            } catch (err) {
+
+            }
           } else {
             element['showimg'] = false;
             element['showimg2'] = true;
             element.checkoutEmotion.age = '';
           }
-          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkinImageCrop).subscribe((image) => {
+          try {
+            this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.checkinImageCrop).subscribe((image) => {
+              element['image1'] = 'data:image/jpg;base64,' + image['data'];
+              // element['showimg'] = true;
+              // console.log("hi",element.checkout != '');
+            })
+          } catch (err) {
 
-            element['image1'] = 'data:image/jpg;base64,' + image['data'];
-            // element['showimg'] = true;
-            // console.log("hi",element.checkout != '');
-
-          })
+          }
         })
 
         this.dataSource = attendance;
