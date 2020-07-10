@@ -144,7 +144,7 @@ export class InfoComponent implements OnInit {
     let id = item.substring(0, 7);
     const dialogRef = this.dialog.open(TrainComponent, {
       width: '820px',
-      data: { id, name, title, nameem, surname, rowid }
+      data: { id, name, title, item, surname, rowid }
     });
     dialogRef.afterClosed().subscribe(result => {
 

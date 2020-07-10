@@ -7,7 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 interface DialogData {
   id: any;
   name: string;
-  title: string;nameem: string;surname: string;
+  title: string;item: string;surname: string;
   rowid: string;
 }
 
