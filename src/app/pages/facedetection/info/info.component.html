@@ -97,7 +97,7 @@
       <a style="font-size: 50px; align-self: center; color: #777;">NO DATA</a>
     </div>
     <div style="text-align: center;padding-top: 10px;">
-      <pagination-controls id="info" (pageChange)="p2 = $event"></pagination-controls>
+      <pagination-controls id="info" (pageChange)="p2 = $event;onChangePage($event);"></pagination-controls>
     </div>
 
     <!-- <div mat-dialog-actions>

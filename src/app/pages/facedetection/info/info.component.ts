@@ -80,12 +80,12 @@ export class InfoComponent implements OnInit {
           }
           else element['canselect'] = false;
 
-          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+          // this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
-            element['image1'] = 'data:image/jpg;base64,' + image['data'];
+          //   element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
 
-          })
+          // })
           try {
             if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
             else if (element['camera']  == 2) element['inout'] = "ขาออก A"
@@ -113,6 +113,14 @@ export class InfoComponent implements OnInit {
         let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
         list.sort((a, b) => (a.id - b.id));
         this.listmea = list;
+        var pagefrom = (this.p2 - 1) * this.itemsPerPage2;
+        var pageto = this.p2 * this.itemsPerPage2;
+        for (var page = pagefrom; page < pageto; page++) {
+          let index = page
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + cropinfo[index].name).subscribe((image) => {
+            cropinfo[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
+          })
+        }
         // this.listmea = [{ 'name': " เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
         if(this.dataSource.length > 0){
@@ -207,12 +215,12 @@ export class InfoComponent implements OnInit {
           }
           else element['canselect'] = false;
 
-          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
+          // this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + element.name).subscribe((image) => {
 
-            element['image1'] = 'data:image/jpg;base64,' + image['data'];
+          //   element['image1'] = 'data:image/jpg;base64,' + image['data'];
 
 
-          })
+          // })
 
           try {
             if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
@@ -241,7 +249,14 @@ export class InfoComponent implements OnInit {
         let list = [{ 'name': "เลือกพนักงาน -" }, ...profile];
         list.sort((a, b) => (a.id - b.id));
         this.listmea = list;
-        // this.listmea = [{ 'name': "เลือกพนักงาน -" }, ...profile];
+        var pagefrom = (this.p2 - 1) * this.itemsPerPage2;
+        var pageto = this.p2 * this.itemsPerPage2;
+        for (var page = pagefrom; page < pageto; page++) {
+          let index = page
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + cropinfo[index].name).subscribe((image) => {
+            cropinfo[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
+          })
+        }
         this.dataSource = cropinfo;
         if(this.dataSource.length > 0){
           this.empty = false;
@@ -264,6 +279,14 @@ export class InfoComponent implements OnInit {
         this.dataSource = this.dataSource.filter(function (obj) {
           return obj._id !== id; // Or whatever value you want to use
         });
+
+        var index = (this.p2 * this.itemsPerPage2 )-1;
+
+         
+          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.dataSource[index].name).subscribe((image) => {
+            this.dataSource[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
+
+          })
       }
       if(this.dataSource.length > 0){
         this.empty = false;
@@ -298,6 +321,22 @@ export class InfoComponent implements OnInit {
       
 
     });
+  }
+
+  onChangePage(pageOfItems: any) {
+    // update current page of items
+    var pagefrom = (this.p2 - 1) * this.itemsPerPage2;
+    var pageto = this.p2 * this.itemsPerPage2;
+    for (var page = pagefrom; page < pageto; page++) {
+      let index = page
+
+      this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.dataSource[index].name).subscribe((image) => {
+        this.dataSource[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
+
+      })
+    }
+
+
   }
 
   ngOnInit() {
