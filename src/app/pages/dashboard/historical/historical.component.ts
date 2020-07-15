@@ -211,7 +211,7 @@ export class HistoricalComponent {
 
 
 
-            if ((element.checkin).substring(0, 2) == "05" || (element.checkin).substring(0, 2) == "06" || ((element.checkin).substring(0, 2) == "07" && (element.checkin).substring(3, 5) <= 30)) {
+            if ((element.checkin).substring(0, 2) == "05" || (element.checkin).substring(0, 2) == "06" || ((element.checkin).substring(0, 2) == "07" && (element.checkin).substring(3, 5) <= 40)) {
               absence--;
               ontime++;
             }
