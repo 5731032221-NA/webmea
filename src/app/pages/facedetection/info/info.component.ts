@@ -61,7 +61,11 @@ export class InfoComponent implements OnInit {
 
       this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
-
+        if (cropinfo.length > 0) {
+          this.empty = false;
+        } else {
+          this.empty = true;
+        }
 
         cropinfo.forEach((element) => {
 
@@ -123,11 +127,11 @@ export class InfoComponent implements OnInit {
         }
         // this.listmea = [{ 'name': " เลือกพนักงาน -" }, ...profile];
         this.dataSource = cropinfo;
-        if(this.dataSource.length > 0){
-          this.empty = false;
-        }else{
-          this.empty = true;
-        }
+        // if(this.dataSource.length > 0){
+        //   this.empty = false;
+        // }else{
+        //   this.empty = true;
+        // }
         // console.log("aa", this.dataSource);
         this.spinner.hide();
       })
@@ -139,12 +143,11 @@ export class InfoComponent implements OnInit {
 
   }
 
-  trainDialog(item, name, title, nameem, surname, rowid): void {
-    // console.log(item.item)
+  trainDialog(item, name, title, nameem, surname, rowid,datetime,date,camera): void {  // console.log(item.item)
     let id = item.substring(0, 7);
     const dialogRef = this.dialog.open(TrainComponent, {
       width: '820px',
-      data: { id, name, title, item, surname, rowid }
+      data: { id, name, title, item, surname, rowid ,datetime,date,camera}
     });
     dialogRef.afterClosed().subscribe(result => {
 
@@ -196,7 +199,12 @@ export class InfoComponent implements OnInit {
 
       this.http.get<any[]>('http://192.169.118.5:3000/getmeaprofile').subscribe(profile => {
 
-
+        if (cropinfo.length > 0) {
+          this.empty = false;
+        } else {
+          this.empty = true;
+          this.dataSource = [];
+        }
 
         cropinfo.forEach((element) => {
 
@@ -258,11 +266,11 @@ export class InfoComponent implements OnInit {
           })
         }
         this.dataSource = cropinfo;
-        if(this.dataSource.length > 0){
-          this.empty = false;
-        }else{
-          this.empty = true;
-        }
+        // if(this.dataSource.length > 0){
+        //   this.empty = false;
+        // }else{
+        //   this.empty = true;
+        // }
         // console.log("aa", this.dataSource);
         this.spinner.hide();
       })

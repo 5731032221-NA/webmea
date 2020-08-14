@@ -9,6 +9,9 @@ interface DialogData {
   name: string;
   title: string;item: string;surname: string;
   rowid: string;
+  datetime: string;
+  date: string;
+  camera: number;
 }
 
 const httpHeaders = new HttpHeaders({
@@ -58,11 +61,16 @@ export class TrainComponent {
 
 
   onSubmit() {
-    this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name+'/'+this.data.id+'/'+this.data.rowid).subscribe((done) => {
-     
-      this.dialogRef.close(true)
+   
+    this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name + '/' + this.data.id + '/' + this.data.rowid).subscribe((done) => {
+      if (this.data.camera == 2 || this.data.camera == 4) {
+        this.http.get<any[]>('http://192.169.118.5:3000/chagnecheckouttime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
+          this.dialogRef.close(true)
+        })
+      } else {
+        this.dialogRef.close(true)
+      }
     })
-
 
   }
 

@@ -69,7 +69,7 @@
                 <img src="../assets/images/edit.png" style="width: 14px; height: 13px; padding-top: 0px;" /></button>
             </td>
 
-            <td><select (change)="trainDialog($event.target.value,el.name,el.title,el.nameem,el.surname,el._id) "
+            <td><select (change)="trainDialog($event.target.value,el.name,el.title,el.nameem,el.surname,el._id,el.datetime,el.date,el.camera)  "
                 [disabled]="el.canselect">
                 <option *ngFor="let item of listmea" [ngValue]="item">{{item.id}} - {{item.title}} {{item.name}}
                   {{item.surname}}</option>
