@@ -7,7 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { NgbDate, NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { TrainComponent } from '../train/train.component'
 import { DeleteComponent } from '../delete/deletet.component'
-import { EditComponent} from '../edit/edit.component'
+import { EditComponent } from '../edit/edit.component'
 
 
 @Component({
@@ -91,10 +91,10 @@ export class InfoComponent implements OnInit {
 
           // })
           try {
-            if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
-            else if (element['camera']  == 2) element['inout'] = "ขาออก A"
-            else if (element['camera']  == 3) element['inout'] = "ขาเข้า B"
-            else if (element['camera']  == 4) element['inout'] = "ขาออก B"
+            if (element['camera'] == 1) element['inout'] = "ขาเข้า A"
+            else if (element['camera'] == 2) element['inout'] = "ขาออก A"
+            else if (element['camera'] == 3) element['inout'] = "ขาเข้า B"
+            else if (element['camera'] == 4) element['inout'] = "ขาออก B"
           } catch (err) {
             element['inout'] = "-"
           }
@@ -143,11 +143,14 @@ export class InfoComponent implements OnInit {
 
   }
 
-  trainDialog(item, name, title, nameem, surname, rowid,datetime,date,camera): void {  // console.log(item.item)
+  trainDialog(name, title, nameem, surname, rowid, datetime, date, camera): void {
+    // console.log(rowid)
+    let e = document.getElementById(rowid) as HTMLSelectElement;;
+    let item = e.options[e.selectedIndex].value;
     let id = item.substring(0, 7);
     const dialogRef = this.dialog.open(TrainComponent, {
       width: '820px',
-      data: { id, name, title, item, surname, rowid ,datetime,date,camera}
+      data: { id, name, title, item, surname, rowid, datetime, date, camera }
     });
     dialogRef.afterClosed().subscribe(result => {
 
@@ -231,10 +234,10 @@ export class InfoComponent implements OnInit {
           // })
 
           try {
-            if (element['camera']  == 1) element['inout'] = "ขาเข้า A"
-            else if (element['camera']  == 2) element['inout'] = "ขาออก A"
-            else if (element['camera']  == 3) element['inout'] = "ขาเข้า B"
-            else if (element['camera']  == 4) element['inout'] = "ขาออก B"
+            if (element['camera'] == 1) element['inout'] = "ขาเข้า A"
+            else if (element['camera'] == 2) element['inout'] = "ขาออก A"
+            else if (element['camera'] == 3) element['inout'] = "ขาเข้า B"
+            else if (element['camera'] == 4) element['inout'] = "ขาออก B"
           } catch (err) {
             element['inout'] = "-"
           }
@@ -288,17 +291,17 @@ export class InfoComponent implements OnInit {
           return obj._id !== id; // Or whatever value you want to use
         });
 
-        var index = (this.p2 * this.itemsPerPage2 )-1;
+        var index = (this.p2 * this.itemsPerPage2) - 1;
 
-         
-          this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.dataSource[index].name).subscribe((image) => {
-            this.dataSource[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
 
-          })
+        this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.dataSource[index].name).subscribe((image) => {
+          this.dataSource[index]['image1'] = 'data:image/jpg;base64,' + image['data'];
+
+        })
       }
-      if(this.dataSource.length > 0){
+      if (this.dataSource.length > 0) {
         this.empty = false;
-      }else{
+      } else {
         this.empty = true;
       }
 
@@ -312,21 +315,21 @@ export class InfoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("afterClosed", result);
-      
+
       if (result > 0) {
         // let dataSource = this.dataSource
         this.dataSource.forEach(element => {
-          
-          if(element['detected'] == id_detected)  element['individual_confidence'] = result;
+
+          if (element['detected'] == id_detected) element['individual_confidence'] = result;
 
           //  element['per'] = "(" + result  + "%)";
         });
         // this.dataSource = dataSource
-        
-        
+
+
       }
-     
-      
+
+
 
     });
   }
