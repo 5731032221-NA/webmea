@@ -67,8 +67,10 @@ export class TrainComponent {
         this.http.get<any[]>('http://192.169.118.5:3000/chagnecheckouttime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
           this.dialogRef.close(true)
         })
-      } else {
-        this.dialogRef.close(true)
+      }  else {
+        this.http.get<any[]>('http://192.169.118.5:3000/chagnecheckintime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
+          this.dialogRef.close(true)
+        })
       }
     })
 
