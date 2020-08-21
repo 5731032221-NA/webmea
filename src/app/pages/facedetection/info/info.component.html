@@ -63,7 +63,7 @@
               {{el.surname}} {{el.per}}</td>
             <!--  - {{el.title}} {{el.name}} {{el.surname}} {{el.per}} -->
             <!-- <form> -->
-            <td><a style="text-align: left; padding-left: 10px; size: 10px; ">> {{el.individual_confidence}}%</a><button
+            <td><a style="text-align: left; padding-left: 10px; size: 10px; ">มากกว่า {{el.individual_confidence}}%</a><button
                 nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;"
                 type="button" class="close" aria-label="Close"
                 (click)="editDialog(el.detected,el.individual_confidence)">
@@ -71,7 +71,7 @@
             </td>
 
             <td><select [id]="el._id" [disabled]="el.canselect">
-                <option *ngFor="let item of listmea" [ngValue]="item">{{item.id}} - {{item.title}} {{item.name}}
+                <option *ngFor="let item of listmea" [attr.selected]="el.detected==item.id ? true : null">{{item.id}} - {{item.title}} {{item.name}}
                   {{item.surname}}</option>
               </select>
               <button nbButton status="warning" style=" font-size: 12px; background-color: #FF7701; color: white;"
