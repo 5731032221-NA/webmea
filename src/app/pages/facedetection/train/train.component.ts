@@ -7,7 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 interface DialogData {
   id: any;
   name: string;
-  title: string;item: string;surname: string;
+  title: string; item: string; surname: string;
   rowid: string;
   datetime: string;
   date: string;
@@ -43,17 +43,17 @@ export class TrainComponent {
     private route: ActivatedRoute,
     public dialogRef: MatDialogRef<TrainComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
-     
-        this.pic = 'data:image/jpg;base64,' + done['data'];
-      })
+    this.http.get<any[]>('http://192.169.118.5:3000/getcropimage/' + this.data.name).subscribe((done) => {
+
+      this.pic = 'data:image/jpg;base64,' + done['data'];
+    })
 
 
   }
 
   ngOnInit(): any {
 
-    
+
 
 
   }
@@ -61,23 +61,19 @@ export class TrainComponent {
 
 
   onSubmit() {
-   
-    this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name + '/' + this.data.id + '/' + this.data.rowid).subscribe((done) => {
-      if (this.data.camera == 2 || this.data.camera == 4) {
-        this.http.get<any[]>('http://192.169.118.5:3000/chagnecheckouttime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
-          this.dialogRef.close(true)
-        })
-      }  else {
-        this.http.get<any[]>('http://192.169.118.5:3000/chagnecheckintime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
-          this.dialogRef.close(true)
-        })
-      }
+
+
+    this.http.get<any[]>('http://192.169.118.5:3000/chagnetime/' + this.data.date + '/' + this.data.datetime + '/' + this.data.id + '/' + this.data.name).subscribe((done) => {
+      this.http.get<any[]>('http://192.169.118.5:3000/traincropimage/' + this.data.name + '/' + this.data.id + '/' + this.data.rowid).subscribe((done) => {
+        this.dialogRef.close(true)
+      })
     })
+
 
   }
 
-  
- 
+
+
 
 }
 
