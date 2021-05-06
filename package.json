@@ -61,7 +61,7 @@
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.0",
     "file-saver": "^2.0.2",
-    "highcharts": "^8.0.4",
+    "highcharts": "^9.0.0",
     "highcharts-angular": "^2.4.0",
     "intl": "1.2.5",
     "ionicons": "2.0.1",
